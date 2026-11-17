@@ -6,6 +6,7 @@
       min-height: max(884px, 100dvh);
     }
   </style>
+  <script src="js/config.js"></script>
   </head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(70,54,43,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Maryeli Lash Studio Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfDEXtDyo9-SvFRrl1CVdFJDyCuLuQUybZpABB4O9qOQ_sT2MGg7KjeHKN_gMCXRPJsdwVGamwYu2gvG1c34i1IPTUG22UWjtOwhLaHdJNwMt5Frz0lZzUW34wMU7Ijiz1_ifw25priTS9laRqO9P72dTtv8oTApPy5ggLfDEHtdDr9nasxr3_8Sh2dqXnaj83TCLeAN78B3XVd0u8MQ4wtNQcA-_lgkW3oVF7Dw"/><div class="flex flex-col truncate"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Maryeli</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary truncate">Contacto Y Citas</span></div></div><div class="flex items-center gap-space-sm shrink-0"><a class="flex items-center gap-1 h-11 px-3.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm uppercase hover:opacity-90 transition-all shadow-[0_4px_16px_rgba(83,99,81,0.25)]" href="https://wa.me/50664730344?text=Hola%2C%20quisiera%20agendar%20una%20cita%20en%20Maryeli%20Lash%20Studio" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[18px]">calendar_month</span><span class="hidden xs:inline">Agendar</span></a><div class="w-11 h-11 flex items-center justify-center shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJCbQf2K2NHjDEOVrvj-yrPnh0XOd8Z0ZWHdLJiL8u4YttmSB41dK5soaO6Sl4eLPYcNBgG093B5Xxn2nnSn7YygLf9ZfgBp8xHGzhYvgDqq6QOnV3s3hVS7MSkGvFc2IOE5FLODxjw0_6fhiAD-7c7YKui12FFsX5lmDisZH_nC7w96mDv8B9hCsj_IChkAQ6e96N-tWk_NSh_uBF1I8AikzyWVrLjRROPG8KUg"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-10">
 <!-- Header Editorial Section -->
 <section class="px-margin-mobile pt-4 pb-2">
@@ -34,7 +35,7 @@
 </section>
 <!-- Interactive Booking Form Card -->
 <section class="px-margin-mobile mt-6">
-<form class="bg-surface-container-lowest rounded-xl p-5 shadow-[0_8px_30px_rgba(70,54,43,0.06)] flex flex-col gap-5" id="booking-form" onsubmit="event.preventDefault(); sendToWhatsApp();">
+<form class="bg-surface-container-lowest rounded-xl p-5 shadow-[0_8px_30px_rgba(70,54,43,0.06)] flex flex-col gap-5" id="booking-form" onsubmit="submitBooking(event); return false;">
 <!-- Step 1: Select Service -->
 <div>
 <div class="flex items-center justify-between mb-2">
@@ -164,16 +165,40 @@
 </div>
 <!-- Action Button -->
 <div class="pt-2">
-<button class="w-full h-12 rounded-full bg-primary text-surface-bright font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(47,33,23,0.25)] active:scale-[0.98] transition-transform" type="submit">
-<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">send</span>
-<span>Confirmar Cita por WhatsApp</span>
+<button id="submit-booking-btn" class="w-full h-12 rounded-full bg-primary text-surface-bright font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(47,33,23,0.25)] active:scale-[0.98] transition-transform" type="submit">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">event_available</span>
+<span id="submit-booking-label">Confirmar Reserva</span>
 </button>
 <p class="font-label-sm text-[10px] text-center text-on-surface-variant mt-2.5 flex items-center justify-center gap-1">
 <span class="material-symbols-outlined text-[14px] text-secondary">lock</span>
-          Respuesta y confirmación en menos de 15 minutos
+          Reserva directa en agenda • Confirmación inmediata
         </p>
 </div>
 </form>
+<!-- Confirmation Card (shown after booking) -->
+<div id="booking-confirmation" class="hidden bg-surface-container-lowest rounded-xl p-5 shadow-[0_8px_30px_rgba(70,54,43,0.08)] border border-secondary/30 flex flex-col gap-3">
+  <div class="flex items-center gap-2.5">
+    <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-[22px]">check_circle</span>
+    </div>
+    <div>
+      <span class="text-[10px] uppercase tracking-widest text-secondary font-semibold block">¡Cita Reservada!</span>
+      <h3 class="font-headline-sm text-headline-sm text-primary" id="conf-code">Código: MLS-0000</h3>
+    </div>
+  </div>
+  <div id="conf-summary" class="bg-surface-container-low rounded-lg p-3 text-xs text-on-surface space-y-1"></div>
+  <div class="bg-secondary-container/40 rounded-lg p-3 text-xs text-primary">
+    <p class="font-semibold">📲 Para apartar tu horario:</p>
+    <p class="mt-0.5" id="conf-sinpe-info">Envía el anticipo de ₡5,000 por SINPE Móvil al 6473-0344 y compártenos el comprobante por WhatsApp.</p>
+  </div>
+  <button id="conf-wa-btn" type="button" class="w-full h-11 rounded-full bg-secondary text-on-secondary font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm">
+    <span class="material-symbols-outlined text-[18px]">chat</span>
+    <span>Enviar Comprobante por WhatsApp</span>
+  </button>
+  <button type="button" onclick="resetBookingForm()" class="w-full py-2 text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant underline">
+    Agendar otra cita
+  </button>
+</div>
 </section>
 <!-- Quick Action Contact Channels -->
 <section class="px-margin-mobile mt-6">
@@ -287,68 +312,174 @@
 <span class="font-label-sm text-[10px] font-semibold text-primary block mt-0.5">Valeria S. — Clienta Frecuente</span>
 </div>
 </div>
+<div class="mt-6 text-center">
+  <a href="admin.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-on-surface-variant/70 hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[15px]">settings</span>
+    <span>Configuración del Estudio</span>
+  </a>
+</div>
 </section>
 </div>
 <script>
-  // Service chip selector logic
-  const serviceChips = document.querySelectorAll('.service-chip');
-  const serviceInput = document.getElementById('selected-service-input');
+  const studioCfg = window.getMaryeliConfig();
+  let selectedDateIso = '';
+  let selectedDateLabel = '';
 
-  serviceChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      serviceChips.forEach(c => {
-        c.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'active');
-        c.classList.add('bg-surface-container-low', 'text-on-surface');
+  // Render services dynamically from config
+  function initServices() {
+    const container = document.getElementById('service-options');
+    const serviceInput = document.getElementById('selected-service-input');
+    const list = studioCfg.services || [];
+    if (!list.length) return;
+    container.innerHTML = '';
+    list.forEach((srv, i) => {
+      const label = `${srv.name} (${srv.price})`;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = i === 0
+        ? 'service-chip active flex flex-col items-start p-3 rounded-lg text-left bg-secondary-container text-on-secondary-container transition-all'
+        : 'service-chip flex flex-col items-start p-3 rounded-lg text-left bg-surface-container-low text-on-surface hover:bg-surface-container transition-all';
+      btn.setAttribute('data-service', label);
+      btn.innerHTML = `
+        <span class="font-title-md text-[13px] font-semibold leading-tight">${srv.shortName || srv.name}</span>
+        <span class="font-label-sm text-[10px] opacity-80 mt-0.5">${srv.subtitle || ''}</span>
+        <span class="font-price-tag text-label-md ${i === 0 ? 'text-secondary' : 'text-primary'} mt-1.5 font-bold">${srv.price}</span>
+      `;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.service-chip').forEach(c => {
+          c.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'active');
+          c.classList.add('bg-surface-container-low', 'text-on-surface');
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+        btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'active');
+        serviceInput.value = label;
       });
-      chip.classList.remove('bg-surface-container-low', 'text-on-surface');
-      chip.classList.add('bg-secondary-container', 'text-on-secondary-container', 'active');
-      serviceInput.value = chip.getAttribute('data-service');
+      container.appendChild(btn);
     });
-  });
+    serviceInput.value = `${list[0].name} (${list[0].price})`;
+  }
 
-  // Date chip selector logic
-  const dateChips = document.querySelectorAll('.date-chip');
-  const dateInput = document.getElementById('selected-date-input');
+  // Generate next 7 open days (Mon-Sat)
+  function initDates() {
+    const scroll = document.getElementById('date-scroll');
+    const dateInput = document.getElementById('selected-date-input');
+    const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    const fullDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
-  dateChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      dateChips.forEach(c => {
-        c.classList.remove('bg-primary', 'text-surface-bright', 'active', 'shadow-sm');
-        c.classList.add('bg-surface-container-low', 'text-on-surface');
-        const dot = c.querySelector('span:last-child');
-        if (dot) {
-          dot.classList.remove('bg-surface-bright');
-          dot.classList.add('bg-secondary');
-        }
-      });
-      chip.classList.remove('bg-surface-container-low', 'text-on-surface');
-      chip.classList.add('bg-primary', 'text-surface-bright', 'active', 'shadow-sm');
-      const dot = chip.querySelector('span:last-child');
-      if (dot) {
-        dot.classList.remove('bg-secondary');
-        dot.classList.add('bg-surface-bright');
+    scroll.innerHTML = '';
+    const days = [];
+    const cursor = new Date();
+    while (days.length < 7) {
+      if (cursor.getDay() !== 0) {
+        const y = cursor.getFullYear();
+        const m = String(cursor.getMonth() + 1).padStart(2, '0');
+        const d = String(cursor.getDate()).padStart(2, '0');
+        days.push({
+          iso: `${y}-${m}-${d}`,
+          shortDay: dayNames[cursor.getDay()],
+          num: d,
+          label: `${fullDays[cursor.getDay()]}, ${cursor.getDate()} ${months[cursor.getMonth()]}`
+        });
       }
-      dateInput.value = chip.getAttribute('data-date');
-    });
-  });
+      cursor.setDate(cursor.getDate() + 1);
+    }
 
-  // Time chip selector logic
-  const timeChips = document.querySelectorAll('.time-chip');
-  const timeInput = document.getElementById('selected-time-input');
-
-  timeChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      timeChips.forEach(c => {
-        c.classList.remove('bg-primary', 'text-surface-bright', 'font-semibold', 'active');
-        c.classList.add('bg-surface-container-low', 'text-on-surface');
+    days.forEach((day, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      const isFirst = idx === 0;
+      btn.className = isFirst
+        ? 'date-chip active flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-primary text-surface-bright transition-all shadow-sm'
+        : 'date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all';
+      btn.innerHTML = `
+        <span class="font-label-sm text-[10px] ${isFirst ? 'opacity-80' : 'text-on-surface-variant'} uppercase">${day.shortDay}</span>
+        <span class="font-title-md text-[15px] font-bold">${day.num}</span>
+        <span class="w-1.5 h-1.5 rounded-full ${isFirst ? 'bg-surface-bright' : 'bg-secondary'} mt-1"></span>
+      `;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.date-chip').forEach(c => {
+          c.classList.remove('bg-primary', 'text-surface-bright', 'active', 'shadow-sm');
+          c.classList.add('bg-surface-container-low', 'text-on-surface');
+          const dot = c.querySelector('span:last-child');
+          if (dot) { dot.classList.remove('bg-surface-bright'); dot.classList.add('bg-secondary'); }
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+        btn.classList.add('bg-primary', 'text-surface-bright', 'active', 'shadow-sm');
+        const dot = btn.querySelector('span:last-child');
+        if (dot) { dot.classList.remove('bg-secondary'); dot.classList.add('bg-surface-bright'); }
+        selectedDateIso = day.iso;
+        selectedDateLabel = day.label;
+        dateInput.value = day.iso;
+        loadAvailability(day.iso);
       });
-      chip.classList.remove('bg-surface-container-low', 'text-on-surface');
-      chip.classList.add('bg-primary', 'text-surface-bright', 'font-semibold', 'active');
-      timeInput.value = chip.getAttribute('data-time');
+      scroll.appendChild(btn);
     });
-  });
 
-  // Quick tag helper
+    selectedDateIso = days[0].iso;
+    selectedDateLabel = days[0].label;
+    dateInput.value = days[0].iso;
+    loadAvailability(days[0].iso);
+  }
+
+  // Load time slots (real from Supabase if configured, or default)
+  async function loadAvailability(dateIso) {
+    const grid = document.getElementById('time-options');
+    const timeInput = document.getElementById('selected-time-input');
+    const isSat = new Date(dateIso + 'T12:00:00').getDay() === 6;
+    const baseTimes = isSat
+      ? ['09:00 AM', '10:30 AM', '12:00 PM', '01:30 PM', '03:00 PM']
+      : ['09:00 AM', '10:30 AM', '12:00 PM', '02:00 PM', '03:30 PM', '05:00 PM'];
+    let takenSet = new Set();
+
+    if (studioCfg.supabaseUrl && studioCfg.supabaseKey) {
+      grid.innerHTML = '<div class="col-span-3 text-center text-xs text-on-surface-variant py-3">Consultando disponibilidad...</div>';
+      try {
+        const rows = await window.supabaseFetch(studioCfg, 'rpc/get_booked_slots', {
+          method: 'POST',
+          body: JSON.stringify({ p_date: dateIso })
+        });
+        if (Array.isArray(rows)) {
+          rows.forEach(r => takenSet.add(r.appointment_time));
+        }
+      } catch (e) {}
+    }
+
+    const slots = baseTimes.map(time => ({ time, available: !takenSet.has(time) }));
+
+    grid.innerHTML = '';
+    let firstPicked = false;
+    slots.forEach(slot => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      if (!slot.available) {
+        btn.disabled = true;
+        btn.className = 'flex items-center justify-center py-2 px-1 rounded-lg bg-surface-dim/40 text-on-surface-variant/40 font-label-md text-[11px] line-through cursor-not-allowed';
+        btn.textContent = 'Ocupado';
+      } else {
+        const active = !firstPicked;
+        if (active) {
+          firstPicked = true;
+          timeInput.value = slot.time;
+        }
+        btn.className = active
+          ? 'time-chip active flex items-center justify-center py-2 px-1 rounded-lg bg-primary text-surface-bright font-label-md text-[11px] font-semibold transition-all'
+          : 'time-chip flex items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-[11px] transition-all';
+        btn.textContent = slot.time;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.time-chip').forEach(c => {
+            c.classList.remove('bg-primary', 'text-surface-bright', 'font-semibold', 'active');
+            c.classList.add('bg-surface-container-low', 'text-on-surface');
+          });
+          btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+          btn.classList.add('bg-primary', 'text-surface-bright', 'font-semibold', 'active');
+          timeInput.value = slot.time;
+        });
+      }
+      grid.appendChild(btn);
+    });
+  }
+
   function appendTag(text) {
     const notesArea = document.getElementById('client-notes');
     if (notesArea.value.trim() === '') {
@@ -358,24 +489,106 @@
     }
   }
 
-  // Format and redirect directly to WhatsApp
-  function sendToWhatsApp() {
+  async function submitBooking(event) {
+    event.preventDefault();
     const service = document.getElementById('selected-service-input').value;
-    const date = document.getElementById('selected-date-input').value;
+    const date = selectedDateIso || document.getElementById('selected-date-input').value;
     const time = document.getElementById('selected-time-input').value;
-    const name = document.getElementById('client-name').value;
-    const phone = document.getElementById('client-phone').value;
-    const notes = document.getElementById('client-notes').value || 'Ninguna especificada';
+    const name = document.getElementById('client-name').value.trim();
+    const phone = document.getElementById('client-phone').value.trim();
+    const notes = document.getElementById('client-notes').value.trim() || 'Ninguna especificada';
 
-    const message = `✨ *Solicitud de Cita - Maryeli Lash Studio* ✨%0A%0A` +
-      `👤 *Cliente:* ${encodeURIComponent(name)}%0A` +
-      `📱 *Teléfono:* ${encodeURIComponent(phone)}%0A` +
-      `👁️ *Servicio:* ${encodeURIComponent(service)}%0A` +
-      `📅 *Fecha preferida:* ${encodeURIComponent(date)}%0A` +
-      `⏰ *Horario:* ${encodeURIComponent(time)}%0A` +
-      `📝 *Notas / Detalles:* ${encodeURIComponent(notes)}%0A%0A` +
-      `_Hola Maryeli, quisiera confirmar la disponibilidad y los datos para el anticipo._`;
+    if (!time) {
+      alert('Por favor elige un horario disponible.');
+      return;
+    }
 
-    window.open(`https://wa.me/50664730344?text=${message}`, '_blank');
+    const btn = document.getElementById('submit-booking-btn');
+    const lbl = document.getElementById('submit-booking-label');
+    btn.disabled = true;
+    lbl.textContent = 'Reservando...';
+
+    let bookingCode = 'MLS-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+
+    if (studioCfg.supabaseUrl && studioCfg.supabaseKey) {
+      try {
+        await window.supabaseFetch(studioCfg, 'appointments', {
+          method: 'POST',
+          headers: { 'Prefer': 'return=minimal' },
+          body: JSON.stringify({
+            code: bookingCode,
+            appointment_date: date,
+            appointment_time: time,
+            service,
+            client_name: name,
+            client_phone: phone,
+            notes
+          })
+        });
+      } catch (err) {
+        const msg = String(err.message || '');
+        if (msg.includes('appointments_unique_active_slot') || msg.includes('duplicate')) {
+          alert('⚠️ Ese horario acaba de ser reservado. Por favor elige otro.');
+        } else {
+          alert('⚠️ No se pudo guardar la cita: ' + msg);
+        }
+        btn.disabled = false;
+        lbl.textContent = 'Confirmar Reserva';
+        loadAvailability(date);
+        return;
+      }
+    } else {
+      const localList = JSON.parse(localStorage.getItem('maryeli_local_bookings') || '[]');
+      localList.unshift({ id: bookingCode, date: selectedDateLabel, time, service, client: name, phone, notes, status: 'Pendiente SINPE' });
+      localStorage.setItem('maryeli_local_bookings', JSON.stringify(localList));
+    }
+
+    document.getElementById('booking-form').classList.add('hidden');
+    document.getElementById('booking-confirmation').classList.remove('hidden');
+    document.getElementById('conf-code').textContent = `Código: ${bookingCode}`;
+    document.getElementById('conf-summary').innerHTML = `
+      <p><strong>Cliente:</strong> ${name}</p>
+      <p><strong>Servicio:</strong> ${service}</p>
+      <p><strong>Fecha:</strong> ${selectedDateLabel} (${date})</p>
+      <p><strong>Hora:</strong> ${time}</p>
+    `;
+    document.getElementById('conf-sinpe-info').textContent =
+      `Envía el anticipo de ${studioCfg.anticipo} por SINPE Móvil al ${studioCfg.sinpe} y compártenos el comprobante por WhatsApp.`;
+
+    document.getElementById('conf-wa-btn').onclick = () => {
+      const message = `✨ *Cita Reservada (${bookingCode}) - Maryeli Lash Studio* ✨%0A%0A` +
+        `👤 *Cliente:* ${encodeURIComponent(name)}%0A` +
+        `📱 *Teléfono:* ${encodeURIComponent(phone)}%0A` +
+        `👁️ *Servicio:* ${encodeURIComponent(service)}%0A` +
+        `📅 *Fecha:* ${encodeURIComponent(selectedDateLabel)} (${date})%0A` +
+        `⏰ *Hora:* ${encodeURIComponent(time)}%0A` +
+        `📝 *Notas:* ${encodeURIComponent(notes)}%0A%0A` +
+        `_Adjunto el comprobante del SINPE Móvil por ${encodeURIComponent(studioCfg.anticipo)}._`;
+      window.open(`https://wa.me/${studioCfg.whatsapp}?text=${message}`, '_blank');
+    };
+
+    btn.disabled = false;
+    lbl.textContent = 'Confirmar Reserva';
   }
+
+  function resetBookingForm() {
+    document.getElementById('booking-confirmation').classList.add('hidden');
+    document.getElementById('booking-form').classList.remove('hidden');
+    initDates();
+  }
+
+  async function bootStudio() {
+    if (studioCfg.supabaseUrl && studioCfg.supabaseKey) {
+      try {
+        const rows = await window.supabaseFetch(studioCfg, 'studio_config?id=eq.default&select=config');
+        if (Array.isArray(rows) && rows[0] && rows[0].config) {
+          Object.assign(studioCfg, rows[0].config);
+        }
+      } catch (e) {}
+    }
+    initServices();
+    initDates();
+  }
+
+  bootStudio();
 </script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-bright/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(70,54,43,0.06)]" data-active-classes="text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1 after:h-1 after:rounded-full after:bg-secondary"><div class="h-16 px-space-sm flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 text-on-surface-variant hover:text-primary transition-colors" data-path="inicio" href="index.html"><span class="material-symbols-outlined text-[22px]">spa</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Inicio</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 text-on-surface-variant hover:text-primary transition-colors" data-path="catalogo-de-servicios" href="servicios.html"><span class="material-symbols-outlined text-[22px]">visibility</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Servicios</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 text-on-surface-variant hover:text-primary transition-colors" data-path="galeria-de-trabajos" href="galeria.html"><span class="material-symbols-outlined text-[22px]">auto_awesome</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Galería</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 transition-colors text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1 after:h-1 after:rounded-full after:bg-secondary" data-path="contacto-y-citas" href="contacto.html"><span class="material-symbols-outlined text-[22px]">event_available</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Contacto</span></a></div></nav></body></html>

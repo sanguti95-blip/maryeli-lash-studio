@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Configuración — Maryeli Lash Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#46362b',
+            secondary: '#536351',
+            'secondary-container': '#d6e8d1',
+            'on-secondary-container': '#3b4b3a',
+            tertiary: '#bfa584',
+            surface: '#faf7f2',
+            'surface-bright': '#fcf9f4',
+            'surface-container': '#f0ede9',
+            'surface-container-low': '#f6f3ee',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-high': '#ebe8e3',
+            'on-surface': '#1c1c19',
+            'on-surface-variant': '#4e453f',
+            'outline-variant': '#d2c4bc',
+          },
+          fontFamily: {
+            serif: ['"EB Garamond"', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <script src="js/config.js"></script>
+</head>
+<body class="bg-surface text-on-surface font-sans min-h-screen pb-24">
+
+  <!-- Top Header -->
+  <header class="sticky top-0 z-40 bg-surface-bright/95 backdrop-blur-md border-b border-outline-variant/30 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <a href="contacto.html" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+      </a>
+      <div>
+        <h1 class="font-serif text-xl font-medium text-primary leading-none">Configuración</h1>
+        <span class="text-[10px] uppercase tracking-widest text-secondary font-semibold">Maryeli Lash Studio</span>
+      </div>
+    </div>
+    <button id="lock-btn" onclick="lockAdmin()" class="hidden px-3 py-1.5 rounded-full bg-surface-container text-[11px] font-semibold text-primary uppercase tracking-wider">
+      Salir
+    </button>
+  </header>
+
+  <!-- PIN Gate -->
+  <section id="pin-gate" class="px-4 mt-10 max-w-md mx-auto">
+    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm text-center flex flex-col items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+        <span class="material-symbols-outlined text-[26px]">lock</span>
+      </div>
+      <div>
+        <h2 class="font-serif text-2xl text-primary">Panel del Estudio</h2>
+        <p class="text-xs text-on-surface-variant mt-1">Ingresa el PIN de administración para gestionar citas, precios y horarios.</p>
+      </div>
+      <input id="pin-input" type="password" inputmode="numeric" maxlength="8" placeholder="PIN (por defecto: 2026)"
+        class="w-full h-11 px-4 rounded-xl bg-surface-container-low text-center text-base font-semibold tracking-widest text-primary focus:outline-none focus:ring-2 focus:ring-secondary"/>
+      <p id="pin-error" class="hidden text-xs text-red-700 font-medium">PIN incorrecto. Intenta de nuevo.</p>
+      <button onclick="unlockAdmin()" class="w-full h-11 rounded-full bg-primary text-surface-bright text-xs font-semibold uppercase tracking-wider">
+        Entrar al Panel
+      </button>
+    </div>
+  </section>
+
+  <!-- Admin Dashboard -->
+  <main id="admin-panel" class="hidden px-4 mt-4 max-w-md mx-auto flex flex-col gap-4">
+
+    <!-- Tabs -->
+    <div class="grid grid-cols-3 gap-1.5 bg-surface-container p-1 rounded-xl">
+      <button class="admin-tab py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider bg-primary text-surface-bright" data-tab="agenda" onclick="switchTab('agenda')">Agenda</button>
+      <button class="admin-tab py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant" data-tab="servicios" onclick="switchTab('servicios')">Servicios</button>
+      <button class="admin-tab py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant" data-tab="ajustes" onclick="switchTab('ajustes')">Ajustes</button>
+    </div>
+
+    <!-- Tab 1: Agenda -->
+    <section id="tab-agenda" class="tab-content flex flex-col gap-3">
+      <div class="flex items-center justify-between">
+        <h2 class="font-serif text-xl text-primary">Citas Agendadas</h2>
+        <button onclick="loadAppointments()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold">
+          <span class="material-symbols-outlined text-[15px]">refresh</span>
+          <span>Actualizar</span>
+        </button>
+      </div>
+      <div id="appointments-status" class="text-xs text-on-surface-variant bg-surface-container-low rounded-xl p-3">
+        Cargando citas...
+      </div>
+      <div id="appointments-list" class="flex flex-col gap-3"></div>
+    </section>
+
+    <!-- Tab 2: Servicios y Precios -->
+    <section id="tab-servicios" class="tab-content hidden flex flex-col gap-3">
+      <div>
+        <h2 class="font-serif text-xl text-primary">Servicios y Precios</h2>
+        <p class="text-xs text-on-surface-variant">Edita los nombres, subtítulos y precios en colones (₡) del formulario de citas.</p>
+      </div>
+      <div id="services-editor" class="flex flex-col gap-3"></div>
+      <button onclick="saveAllConfig()" class="w-full h-11 rounded-full bg-primary text-surface-bright text-xs font-semibold uppercase tracking-wider shadow-sm">
+        Guardar Servicios y Precios
+      </button>
+    </section>
+
+    <!-- Tab 3: Ajustes Generales y Conexión -->
+    <section id="tab-ajustes" class="tab-content hidden flex flex-col gap-3">
+      <h2 class="font-serif text-xl text-primary">Configuración de la Página</h2>
+
+      <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-3">
+        <div>
+          <label class="text-[11px] uppercase tracking-wider font-semibold text-primary block mb-1">WhatsApp del Estudio (sin +)</label>
+          <input id="cfg-whatsapp" type="text" class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-sm text-on-surface"/>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="text-[11px] uppercase tracking-wider font-semibold text-primary block mb-1">SINPE Móvil</label>
+            <input id="cfg-sinpe" type="text" class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-sm text-on-surface"/>
+          </div>
+          <div>
+            <label class="text-[11px] uppercase tracking-wider font-semibold text-primary block mb-1">Anticipo</label>
+            <input id="cfg-anticipo" type="text" class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-sm text-on-surface"/>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="text-[11px] uppercase tracking-wider font-semibold text-primary block mb-1">Horario Lun–Vie</label>
+            <input id="cfg-hours-wk" type="text" class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-xs text-on-surface"/>
+          </div>
+          <div>
+            <label class="text-[11px] uppercase tracking-wider font-semibold text-primary block mb-1">Horario Sábado</label>
+            <input id="cfg-hours-sat" type="text" class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-xs text-on-surface"/>
+          </div>
+        </div>
+        <div>
+          <label class="text-[11px] uppercase tracking-wider font-semibold text-primary block mb-1">Link Google Maps</label>
+          <input id="cfg-maps" type="url" class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-xs text-on-surface"/>
+        </div>
+      </div>
+
+      <!-- Supabase Connection -->
+      <div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex flex-col gap-2.5 border border-secondary/20">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary text-[20px]">database</span>
+          <h3 class="font-serif text-lg text-primary">Conexión Supabase</h3>
+        </div>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Proyecto: <code>uzmzafnjlunrfnptpuzw</code>. Pega tu clave pública (<strong>anon / publishable key</strong>) de Supabase &gt; Project Settings &gt; API para guardar citas y configuración en la nube.
+        </p>
+        <input id="cfg-sb-url" type="url" placeholder="https://uzmzafnjlunrfnptpuzw.supabase.co"
+          class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-xs text-on-surface"/>
+        <input id="cfg-sb-key" type="password" placeholder="Publishable / anon key (eyJ... o sb_publishable_...)"
+          class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-xs text-on-surface"/>
+        <div class="flex gap-2">
+          <button onclick="testConnection()" class="flex-1 h-9 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold uppercase tracking-wider">
+            Probar Conexión
+          </button>
+          <button onclick="saveAllConfig()" class="flex-1 h-9 rounded-full bg-primary text-surface-bright text-[11px] font-semibold uppercase tracking-wider">
+            Guardar Todo
+          </button>
+        </div>
+        <p id="save-feedback" class="hidden text-xs text-secondary font-semibold text-center mt-1"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Nav -->
+  <nav class="fixed bottom-0 w-full z-50 bg-surface-bright/95 backdrop-blur-xl border-t border-outline-variant/30">
+    <div class="h-16 px-2 flex items-center justify-around">
+      <a class="flex flex-col items-center justify-center px-2 py-1 text-on-surface-variant" href="index.html">
+        <span class="material-symbols-outlined text-[22px]">spa</span>
+        <span class="text-[10px] tracking-wider uppercase mt-0.5">Inicio</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-2 py-1 text-on-surface-variant" href="servicios.html">
+        <span class="material-symbols-outlined text-[22px]">visibility</span>
+        <span class="text-[10px] tracking-wider uppercase mt-0.5">Servicios</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-2 py-1 text-on-surface-variant" href="galeria.html">
+        <span class="material-symbols-outlined text-[22px]">auto_awesome</span>
+        <span class="text-[10px] tracking-wider uppercase mt-0.5">Galería</span>
+      </a>
+      <a class="flex flex-col items-center justify-center px-2 py-1 text-primary font-semibold" href="contacto.html">
+        <span class="material-symbols-outlined text-[22px]">event_available</span>
+        <span class="text-[10px] tracking-wider uppercase mt-0.5">Contacto</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    const DEFAULT_PIN = '2026';
+    let currentPin = sessionStorage.getItem('maryeli_admin_pin') || '';
+    let studioConfig = window.getMaryeliConfig();
+
+    if (currentPin) {
+      showPanel();
+    }
+
+    function unlockAdmin() {
+      const entered = document.getElementById('pin-input').value.trim();
+      if (!entered) return;
+      if (!studioConfig.supabaseKey && entered !== DEFAULT_PIN) {
+        document.getElementById('pin-error').classList.remove('hidden');
+        return;
+      }
+      currentPin = entered;
+      sessionStorage.setItem('maryeli_admin_pin', currentPin);
+      document.getElementById('pin-error').classList.add('hidden');
+      showPanel();
+    }
+
+    function lockAdmin() {
+      sessionStorage.removeItem('maryeli_admin_pin');
+      location.reload();
+    }
+
+    function showPanel() {
+      document.getElementById('pin-gate').classList.add('hidden');
+      document.getElementById('admin-panel').classList.remove('hidden');
+      document.getElementById('lock-btn').classList.remove('hidden');
+      populateConfigForm();
+      renderServicesEditor();
+      loadAppointments();
+    }
+
+    function switchTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + name).classList.remove('hidden');
+      document.querySelectorAll('.admin-tab').forEach(btn => {
+        if (btn.dataset.tab === name) {
+          btn.classList.add('bg-primary', 'text-surface-bright');
+          btn.classList.remove('text-on-surface-variant');
+        } else {
+          btn.classList.remove('bg-primary', 'text-surface-bright');
+          btn.classList.add('text-on-surface-variant');
+        }
+      });
+    }
+
+    function populateConfigForm() {
+      studioConfig = window.getMaryeliConfig();
+      document.getElementById('cfg-whatsapp').value = studioConfig.whatsapp || '';
+      document.getElementById('cfg-sinpe').value = studioConfig.sinpe || '';
+      document.getElementById('cfg-anticipo').value = studioConfig.anticipo || '';
+      document.getElementById('cfg-hours-wk').value = studioConfig.hoursWeekday || '';
+      document.getElementById('cfg-hours-sat').value = studioConfig.hoursSaturday || '';
+      document.getElementById('cfg-maps').value = studioConfig.mapsUrl || '';
+      document.getElementById('cfg-sb-url').value = studioConfig.supabaseUrl || '';
+      document.getElementById('cfg-sb-key').value = studioConfig.supabaseKey || '';
+    }
+
+    function renderServicesEditor() {
+      const container = document.getElementById('services-editor');
+      container.innerHTML = '';
+      (studioConfig.services || []).forEach((srv, idx) => {
+        const card = document.createElement('div');
+        card.className = 'bg-surface-container-lowest rounded-xl p-3.5 shadow-sm flex flex-col gap-2';
+        card.innerHTML = `
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-[10px] uppercase font-semibold text-on-surface-variant">Nombre corto</label>
+              <input data-idx="${idx}" data-field="shortName" value="${srv.shortName || ''}" class="srv-input w-full h-9 px-2.5 rounded-lg bg-surface-container-low text-xs font-semibold text-primary"/>
+            </div>
+            <div>
+              <label class="text-[10px] uppercase font-semibold text-on-surface-variant">Precio (₡)</label>
+              <input data-idx="${idx}" data-field="price" value="${srv.price || ''}" class="srv-input w-full h-9 px-2.5 rounded-lg bg-surface-container-low text-xs font-bold text-secondary"/>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="text-[10px] uppercase font-semibold text-on-surface-variant">Nombre completo</label>
+              <input data-idx="${idx}" data-field="name" value="${srv.name || ''}" class="srv-input w-full h-9 px-2.5 rounded-lg bg-surface-container-low text-xs"/>
+            </div>
+            <div>
+              <label class="text-[10px] uppercase font-semibold text-on-surface-variant">Detalle / Duración</label>
+              <input data-idx="${idx}" data-field="subtitle" value="${srv.subtitle || ''}" class="srv-input w-full h-9 px-2.5 rounded-lg bg-surface-container-low text-xs"/>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    async function saveAllConfig() {
+      document.querySelectorAll('.srv-input').forEach(inp => {
+        const idx = parseInt(inp.dataset.idx, 10);
+        const field = inp.dataset.field;
+        studioConfig.services[idx][field] = inp.value.trim();
+      });
+
+      studioConfig.whatsapp = document.getElementById('cfg-whatsapp').value.trim();
+      studioConfig.sinpe = document.getElementById('cfg-sinpe').value.trim();
+      studioConfig.anticipo = document.getElementById('cfg-anticipo').value.trim();
+      studioConfig.hoursWeekday = document.getElementById('cfg-hours-wk').value.trim();
+      studioConfig.hoursSaturday = document.getElementById('cfg-hours-sat').value.trim();
+      studioConfig.mapsUrl = document.getElementById('cfg-maps').value.trim();
+      studioConfig.supabaseUrl = document.getElementById('cfg-sb-url').value.trim();
+      studioConfig.supabaseKey = document.getElementById('cfg-sb-key').value.trim();
+
+      window.saveMaryeliConfigLocal(studioConfig);
+
+      const fb = document.getElementById('save-feedback');
+      fb.classList.remove('hidden');
+
+      if (studioConfig.supabaseUrl && studioConfig.supabaseKey) {
+        fb.textContent = 'Guardando en Supabase...';
+        try {
+          const remotePayload = Object.assign({}, studioConfig);
+          delete remotePayload.supabaseKey;
+          await window.supabaseFetch(studioConfig, 'rpc/admin_save_config', {
+            method: 'POST',
+            body: JSON.stringify({ p_pin: currentPin, p_config: remotePayload })
+          });
+          fb.textContent = '✅ Guardado localmente y en Supabase.';
+        } catch (err) {
+          fb.textContent = '⚠️ Error Supabase: ' + err.message;
+        }
+      } else {
+        fb.textContent = '✅ Cambios guardados en este dispositivo.';
+      }
+      alert(fb.textContent);
+    }
+
+    async function testConnection() {
+      const supabaseUrl = document.getElementById('cfg-sb-url').value.trim();
+      const supabaseKey = document.getElementById('cfg-sb-key').value.trim();
+      if (!supabaseUrl || !supabaseKey) {
+        alert('Pega primero la URL y la Publishable / anon key de Supabase.');
+        return;
+      }
+      try {
+        await window.supabaseFetch({ supabaseUrl, supabaseKey }, 'studio_config?id=eq.default&select=id');
+        alert('✅ Conexión exitosa con Supabase.');
+      } catch (err) {
+        alert('❌ No se pudo conectar: ' + err.message);
+      }
+    }
+
+    async function loadAppointments() {
+      const statusBox = document.getElementById('appointments-status');
+      const listBox = document.getElementById('appointments-list');
+      listBox.innerHTML = '';
+
+      if (!studioConfig.supabaseUrl || !studioConfig.supabaseKey) {
+        const localBookings = JSON.parse(localStorage.getItem('maryeli_local_bookings') || '[]');
+        statusBox.innerHTML = localBookings.length
+          ? 'Mostrando citas guardadas en este navegador. Conecta Supabase en <strong>Ajustes</strong> para sincronizar en la nube.'
+          : 'Aún no has pegado tu <strong>anon key</strong> de Supabase (en la pestaña <strong>Ajustes</strong>).';
+        renderAppointments(localBookings, false);
+        return;
+      }
+
+      statusBox.textContent = 'Consultando Supabase...';
+      try {
+        const rows = await window.supabaseFetch(studioConfig, 'rpc/admin_get_appointments', {
+          method: 'POST',
+          body: JSON.stringify({ p_pin: currentPin })
+        });
+        const mapped = (rows || []).map(r => ({
+          id: r.id,
+          date: r.appointment_date,
+          time: r.appointment_time,
+          service: r.service,
+          client: r.client_name,
+          phone: r.client_phone,
+          notes: r.notes,
+          status: r.status
+        }));
+        statusBox.textContent = `${mapped.length} cita(s) registradas.`;
+        renderAppointments(mapped, true);
+      } catch (err) {
+        statusBox.textContent = '⚠️ Error al cargar citas: ' + err.message;
+      }
+    }
+
+    function renderAppointments(items, isRemote) {
+      const listBox = document.getElementById('appointments-list');
+      listBox.innerHTML = '';
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'bg-surface-container-lowest rounded-xl p-3.5 shadow-sm flex flex-col gap-2';
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold text-primary">${item.date} • ${item.time}</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary-container text-on-secondary-container">${item.status || 'Pendiente'}</span>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-primary">${item.client || item.name}</p>
+            <p class="text-xs text-on-surface-variant">${item.service} • Tel: ${item.phone}</p>
+            ${item.notes ? `<p class="text-[11px] text-on-surface-variant/80 italic mt-1">“${item.notes}”</p>` : ''}
+          </div>
+          ${isRemote ? `
+          <div class="flex gap-1.5 pt-1">
+            <button onclick="updateStatus('${item.id}', 'Confirmada')" class="flex-1 py-1.5 rounded-lg bg-secondary-container text-on-secondary-container text-[10px] font-semibold uppercase">Confirmar</button>
+            <button onclick="updateStatus('${item.id}', 'Completada')" class="flex-1 py-1.5 rounded-lg bg-surface-container text-primary text-[10px] font-semibold uppercase">Completada</button>
+            <button onclick="updateStatus('${item.id}', 'Cancelada')" class="flex-1 py-1.5 rounded-lg bg-red-100 text-red-800 text-[10px] font-semibold uppercase">Cancelar</button>
+          </div>` : ''}
+        `;
+        listBox.appendChild(card);
+      });
+    }
+
+    async function updateStatus(id, status) {
+      if (!studioConfig.supabaseUrl || !studioConfig.supabaseKey) return;
+      try {
+        await window.supabaseFetch(studioConfig, 'rpc/admin_update_appointment_status', {
+          method: 'POST',
+          body: JSON.stringify({ p_pin: currentPin, p_id: id, p_status: status })
+        });
+        loadAppointments();
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    }
+  </script>
+</body>
+</html>

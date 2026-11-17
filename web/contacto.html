@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#dac2b2", "surface-bright": "#fcf9f4", "surface-container-high": "#ebe8e3", "primary-container": "#46362b", "on-error": "#ffffff", "on-tertiary": "#ffffff", "surface-variant": "#e5e2dd", "tertiary-fixed-dim": "#dec2a0", "on-surface": "#1c1c19", "on-tertiary-fixed-variant": "#574329", "tertiary": "#302109", "on-surface-variant": "#4e453f", "secondary": "#536351", "inverse-on-surface": "#f3f0eb", "on-primary-container": "#b59f90", "surface-tint": "#6d5b4e", "surface-dim": "#dcdad5", "background": "#fcf9f4", "on-error-container": "#93000a", "surface-container-low": "#f6f3ee", "error": "#ba1a1a", "on-secondary-fixed": "#111f11", "on-secondary-container": "#586957", "surface-container-lowest": "#ffffff", "surface-container": "#f0ede9", "surface-container-highest": "#e5e2dd", "tertiary-container": "#48361d", "on-primary-fixed": "#26190f", "on-tertiary-container": "#b89f7e", "on-tertiary-fixed": "#271904", "outline-variant": "#d2c4bc", "surface": "#fcf9f4", "primary-fixed": "#f7dece", "primary": "#2f2117", "secondary-container": "#d6e8d1", "outline": "#80756e", "secondary-fixed-dim": "#bacbb6", "error-container": "#ffdad6", "inverse-primary": "#dac2b2", "on-primary-fixed-variant": "#544338", "on-primary": "#ffffff", "secondary-fixed": "#d6e8d1", "on-background": "#1c1c19", "on-secondary-fixed-variant": "#3b4b3a", "on-secondary": "#ffffff", "tertiary-fixed": "#fbdeba", "inverse-surface": "#31302d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-xs": "0.25rem", "margin-mobile": "1.25rem", "gutter-mobile": "1rem", "margin": "3rem", "space-lg": "1.5rem" }, "fontFamily": { "label-md": ["Montserrat"], "display": ["EB Garamond"], "headline-lg": ["EB Garamond"], "headline-md": ["EB Garamond"], "headline-lg-mobile": ["EB Garamond"], "label-sm": ["Montserrat"], "title-md": ["Montserrat"], "display-mobile": ["EB Garamond"], "body-lg": ["Montserrat"], "headline-sm": ["EB Garamond"], "price-tag": ["Montserrat"], "body-md": ["Montserrat"] }, "fontSize": { "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }], "display": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.04em", "fontWeight": "400" }], "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["1.875rem", { "lineHeight": "2.25rem", "letterSpacing": "0.03em", "fontWeight": "400" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "500" }], "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-mobile": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "body-lg": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0", "fontWeight": "400" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "price-tag": ["1.125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-md": ["0.875rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_12px_rgba(70,54,43,0.04)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Maryeli Lash Studio Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfDEXtDyo9-SvFRrl1CVdFJDyCuLuQUybZpABB4O9qOQ_sT2MGg7KjeHKN_gMCXRPJsdwVGamwYu2gvG1c34i1IPTUG22UWjtOwhLaHdJNwMt5Frz0lZzUW34wMU7Ijiz1_ifw25priTS9laRqO9P72dTtv8oTApPy5ggLfDEHtdDr9nasxr3_8Sh2dqXnaj83TCLeAN78B3XVd0u8MQ4wtNQcA-_lgkW3oVF7Dw"/><div class="flex flex-col truncate"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Maryeli</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary truncate">Contacto Y Citas</span></div></div><div class="flex items-center gap-space-sm shrink-0"><a class="flex items-center gap-1 h-11 px-3.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm uppercase hover:opacity-90 transition-all shadow-[0_4px_16px_rgba(83,99,81,0.25)]" href="https://wa.me/50664730344?text=Hola%2C%20quisiera%20agendar%20una%20cita%20en%20Maryeli%20Lash%20Studio" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[18px]">calendar_month</span><span class="hidden xs:inline">Agendar</span></a><div class="w-11 h-11 flex items-center justify-center shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJCbQf2K2NHjDEOVrvj-yrPnh0XOd8Z0ZWHdLJiL8u4YttmSB41dK5soaO6Sl4eLPYcNBgG093B5Xxn2nnSn7YygLf9ZfgBp8xHGzhYvgDqq6QOnV3s3hVS7MSkGvFc2IOE5FLODxjw0_6fhiAD-7c7YKui12FFsX5lmDisZH_nC7w96mDv8B9hCsj_IChkAQ6e96N-tWk_NSh_uBF1I8AikzyWVrLjRROPG8KUg"/></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Header Editorial Section -->
+<section class="px-margin-mobile pt-4 pb-2">
+<div class="flex items-center gap-1.5 mb-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Tu Momento de Calma</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Reserva tu Cita &amp; Contacto</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Diseñamos una mirada que resalta tu armonía natural en un espacio privado, cálido y sereno.</p>
+</section>
+<!-- Visual Studio Teaser Banner -->
+<section class="px-margin-mobile mt-3">
+<div class="relative w-full h-36 rounded-xl overflow-hidden shadow-sm bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="Warm and minimal interior of a luxury lash beauty salon. Soft beige linen bed, neutral sand walls, eucalyptus potted plant in ceramic pot, natural daylight through sheer curtains, calm and serene spa atmosphere, shot on 35mm film aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCoQGy8dVnVXIAydFCMAK64IHCVm-1ZqufEx7hfwSQjKMIOCugah3ls759ZvYvH3SQHu1G-mBOnZgUc8HYuqM-j--m9VUdLDjewsQ5OIKD-Bz8tU_UMZnvhIkSqPmgrUUqiVp6GXI3e16Uytx-MTkT396xU7sL9nwIq7eXuY5ll3nWU-q_wlpsIaVmJr30ELsmcSsjDzsEPQauH7_CTrHruhrc9iSV_zKZbBWgU6g')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/30 to-transparent flex flex-col justify-end p-4 text-surface-bright">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-secondary text-surface-bright text-xs">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+</span>
+<span class="font-label-md text-label-md tracking-wider uppercase text-surface-bright">Atención Personalizada 1 a 1</span>
+</div>
+<p class="font-body-md text-body-md text-surface-container-high/90 text-xs mt-0.5">Espacio libre de prisas, aromaterapia botánica y café de cortesía.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Booking Form Card -->
+<section class="px-margin-mobile mt-6">
+<form class="bg-surface-container-lowest rounded-xl p-5 shadow-[0_8px_30px_rgba(70,54,43,0.06)] flex flex-col gap-5" id="booking-form" onsubmit="event.preventDefault(); sendToWhatsApp();">
+<!-- Step 1: Select Service -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="font-label-md text-label-md uppercase tracking-wider text-primary flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">1</span>
+            Servicio Deseado
+          </label>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Requerido</span>
+</div>
+<!-- Service Pills Selection -->
+<div class="grid grid-cols-2 gap-2" id="service-options">
+<button class="service-chip active flex flex-col items-start p-3 rounded-lg text-left bg-secondary-container text-on-secondary-container transition-all" data-service="Fibras Tecnológicas C (₡20,000)" type="button">
+<span class="font-title-md text-[13px] font-semibold leading-tight">Fibras C</span>
+<span class="font-label-sm text-[10px] opacity-80 mt-0.5">Efecto Natural • 90 min</span>
+<span class="font-price-tag text-label-md text-secondary mt-1.5 font-bold">₡20,000</span>
+</button>
+<button class="service-chip flex flex-col items-start p-3 rounded-lg text-left bg-surface-container-low text-on-surface hover:bg-surface-container transition-all" data-service="Fibras Tecnológicas CC (₡22,000)" type="button">
+<span class="font-title-md text-[13px] font-semibold leading-tight">Fibras CC</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant mt-0.5">Mirada Abierta • 105 min</span>
+<span class="font-price-tag text-label-md text-primary mt-1.5 font-bold">₡22,000</span>
+</button>
+<button class="service-chip flex flex-col items-start p-3 rounded-lg text-left bg-surface-container-low text-on-surface hover:bg-surface-container transition-all" data-service="Fibras Tecnológicas YY (₡25,000)" type="button">
+<span class="font-title-md text-[13px] font-semibold leading-tight">Fibras YY</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant mt-0.5">Volumen Suave • 120 min</span>
+<span class="font-price-tag text-label-md text-primary mt-1.5 font-bold">₡25,000</span>
+</button>
+<button class="service-chip flex flex-col items-start p-3 rounded-lg text-left bg-surface-container-low text-on-surface hover:bg-surface-container transition-all" data-service="Fibras Tecnológicas 4DW (₡28,000)" type="button">
+<span class="font-title-md text-[13px] font-semibold leading-tight">Fibras 4DW</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant mt-0.5">Volumen &amp; Densidad • 130 min</span>
+<span class="font-price-tag text-label-md text-primary mt-1.5 font-bold">₡28,000</span>
+</button>
+</div>
+<input id="selected-service-input" type="hidden" value="Fibras Tecnológicas C (₡20,000)"/>
+</div>
+<!-- Step 2: Date Selector (Interactive Pills) -->
+<div>
+<label class="font-label-md text-label-md uppercase tracking-wider text-primary flex items-center gap-1.5 mb-2.5">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">2</span>
+          Fecha Preferida
+        </label>
+<div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1" id="date-scroll">
+<button class="date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all" data-date="Hoy, 24 Oct" type="button">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Jue</span>
+<span class="font-title-md text-[15px] font-bold">24</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1"></span>
+</button>
+<button class="date-chip active flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-primary text-surface-bright transition-all shadow-sm" data-date="Viernes, 25 Oct" type="button">
+<span class="font-label-sm text-[10px] opacity-80 uppercase">Vie</span>
+<span class="font-title-md text-[15px] font-bold">25</span>
+<span class="w-1.5 h-1.5 rounded-full bg-surface-bright mt-1"></span>
+</button>
+<button class="date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all" data-date="Sábado, 26 Oct" type="button">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Sáb</span>
+<span class="font-title-md text-[15px] font-bold">26</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1"></span>
+</button>
+<button class="date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all" data-date="Lunes, 28 Oct" type="button">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Lun</span>
+<span class="font-title-md text-[15px] font-bold">28</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1"></span>
+</button>
+<button class="date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all" data-date="Martes, 29 Oct" type="button">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Mar</span>
+<span class="font-title-md text-[15px] font-bold">29</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1"></span>
+</button>
+</div>
+<input id="selected-date-input" type="hidden" value="Viernes, 25 Oct"/>
+</div>
+<!-- Step 3: Preferred Time Slot -->
+<div>
+<label class="font-label-md text-label-md uppercase tracking-wider text-primary flex items-center gap-1.5 mb-2.5">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">3</span>
+          Horario Disponible
+        </label>
+<div class="grid grid-cols-3 gap-2" id="time-options">
+<button class="time-chip flex items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-[11px] transition-all" data-time="10:00 AM" type="button">
+            10:00 AM
+          </button>
+<button class="time-chip active flex items-center justify-center py-2 px-1 rounded-lg bg-primary text-surface-bright font-label-md text-[11px] font-semibold transition-all" data-time="12:30 PM" type="button">
+            12:30 PM
+          </button>
+<button class="time-chip flex items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-[11px] transition-all" data-time="03:00 PM" type="button">
+            03:00 PM
+          </button>
+<button class="time-chip flex items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-[11px] transition-all" data-time="05:00 PM" type="button">
+            05:00 PM
+          </button>
+<button class="time-chip flex items-center justify-center py-2 px-1 rounded-lg bg-surface-container-low text-on-surface font-label-md text-[11px] transition-all" data-time="06:30 PM" type="button">
+            06:30 PM
+          </button>
+<button class="flex items-center justify-center py-2 px-1 rounded-lg bg-surface-dim/40 text-on-surface-variant/40 font-label-md text-[11px] line-through cursor-not-allowed" disabled="" type="button">
+            Ocupado
+          </button>
+</div>
+<input id="selected-time-input" type="hidden" value="12:30 PM"/>
+</div>
+<!-- Step 4: Contact Details -->
+<div class="flex flex-col gap-3">
+<label class="font-label-md text-label-md uppercase tracking-wider text-primary flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">4</span>
+          Tus Datos de Contacto
+        </label>
+<div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block mb-1">Nombre Completo</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-secondary">person</span>
+<input class="w-full h-11 pl-10 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none transition-colors" id="client-name" placeholder="Ej. Camila Morales" required="" type="text"/>
+</div>
+</div>
+<div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block mb-1">Teléfono Móvil / WhatsApp</span>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-secondary">phone_iphone</span>
+<input class="w-full h-11 pl-10 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none transition-colors" id="client-phone" placeholder="Ej. 55 1234 5678" required="" type="tel"/>
+</div>
+</div>
+<div>
+<span class="font-label-sm text-[11px] text-on-surface-variant block mb-1">Condición o Notas Previas</span>
+<div class="flex flex-wrap gap-2 mb-2">
+<button class="note-pill text-[10px] font-label-sm py-1 px-2.5 rounded-full bg-surface-container-high text-on-surface hover:bg-secondary-container transition-colors" onclick="appendTag('Es mi primera vez')" type="button">+ Es mi primera vez</button>
+<button class="note-pill text-[10px] font-label-sm py-1 px-2.5 rounded-full bg-surface-container-high text-on-surface hover:bg-secondary-container transition-colors" onclick="appendTag('Retiro de set anterior')" type="button">+ Traigo set anterior</button>
+<button class="note-pill text-[10px] font-label-sm py-1 px-2.5 rounded-full bg-surface-container-high text-on-surface hover:bg-secondary-container transition-colors" onclick="appendTag('Ojos sensibles')" type="button">+ Ojos sensibles</button>
+</div>
+<textarea class="w-full p-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none transition-colors resize-none" id="client-notes" placeholder="Cuéntanos algún detalle o preferencia especial..." rows="2"></textarea>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-2">
+<button class="w-full h-12 rounded-full bg-primary text-surface-bright font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(47,33,23,0.25)] active:scale-[0.98] transition-transform" type="submit">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">send</span>
+<span>Confirmar Cita por WhatsApp</span>
+</button>
+<p class="font-label-sm text-[10px] text-center text-on-surface-variant mt-2.5 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary">lock</span>
+          Respuesta y confirmación en menos de 15 minutos
+        </p>
+</div>
+</form>
+</section>
+<!-- Quick Action Contact Channels -->
+<section class="px-margin-mobile mt-6">
+<div class="bg-surface-container-high rounded-xl p-4 flex items-center justify-between gap-2 shadow-sm">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">¿Dudas previas?</span>
+<span class="font-headline-sm text-[15px] text-primary font-medium truncate">Escríbenos directamente</span>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<a aria-label="Llamada directa" class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center hover:bg-secondary hover:text-on-secondary transition-colors shadow-sm" href="tel:+50664730344">
+<span class="material-symbols-outlined text-[20px]">call</span>
+</a>
+<a aria-label="WhatsApp directo" class="w-10 h-10 rounded-full bg-secondary text-surface-bright flex items-center justify-center hover:opacity-90 transition-opacity shadow-sm" href="https://wa.me/50664730344?text=Hola%20Maryeli%2C%20tengo%20una%20consulta%20sobre%20los%20servicios" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</a>
+<a aria-label="Instagram Maryeli" class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center hover:bg-tertiary hover:text-on-tertiary transition-colors shadow-sm" href="https://www.instagram.com/maryeli_lash_studio/" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Studio Location & Schedule -->
+<section class="px-margin-mobile mt-6 flex flex-col gap-4">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Ubicación &amp; Horarios</span>
+<h2 class="font-headline-md text-headline-md text-primary">Dónde Encontrarnos</h2>
+</div>
+<!-- Map Tile Card -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col">
+<a class="w-full h-44 bg-cover bg-center relative block" href="https://maps.app.goo.gl/jLE2VRxH5RAAuLeVA" rel="noopener noreferrer" target="_blank" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADNuQuqaTOyeZ2QR1Os0_RlqsJZHKLO2wXlFvHwvyzh-OsgYFZ6iNoN9GKT9qTS9h9PWxH7B2r8MKrBJ1nbbucT2h-tFqaD_aLFeMuORC6ilXltF23L32Ak8wtw_iKGGAgO5oe44oCR219Us1ewKn7zExil7DcENAHuZI3H9I-ZRkS6KxD8o0yohbQU1kkpnHP4F4vj3qe7NBFC6EpzXNxEivCLcuWTsgcFN1aaA')">
+<div class="absolute bottom-3 left-3 bg-surface/95 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label-sm text-[11px] font-semibold text-primary">Maryeli Lash Studio • Ver en Maps</span>
+</div>
+</a>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">pin_drop</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-[14px] font-semibold text-primary">Maryeli Lash Studio</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-xs mt-0.5">Estudio privado • Atención con cita previa.</p>
+<a class="inline-flex items-center gap-1.5 mt-2 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] uppercase tracking-wider font-semibold" href="https://maps.app.goo.gl/jLE2VRxH5RAAuLeVA" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[15px]">directions</span>
+<span>Abrir Ubicación en Google Maps</span>
+</a>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30 my-0.5"></div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-md text-[14px] font-semibold text-primary">Horarios de Atención</h3>
+<div class="grid grid-cols-2 gap-2 mt-1">
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-label-sm text-[10px] text-on-surface-variant block uppercase">Lunes a Viernes</span>
+<span class="font-label-md text-[12px] font-bold text-primary">9:00 AM – 7:00 PM</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg">
+<span class="font-label-sm text-[10px] text-on-surface-variant block uppercase">Sábados</span>
+<span class="font-label-md text-[12px] font-bold text-primary">9:00 AM – 4:00 PM</span>
+</div>
+</div>
+<span class="font-label-sm text-[10px] text-on-surface-variant/80 block mt-1.5 italic">Domingos y feriados cerrado por descanso reflexivo.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Studio Policies & Care Guidelines -->
+<section class="px-margin-mobile mt-6 mb-4">
+<div class="bg-surface-container-high rounded-xl p-4 flex flex-col gap-3 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">info</span>
+<h3 class="font-title-md text-[14px] font-semibold text-primary">Políticas de Cita &amp; Recomendaciones</h3>
+</div>
+<div class="space-y-2.5 font-body-md text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0 mt-1.5"></span>
+<p><strong class="text-primary font-medium">Anticipo de confirmación:</strong> Toda cita requiere ₡5,000 por SINPE Móvil para apartar el horario, descontables del monto final.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0 mt-1.5"></span>
+<p><strong class="text-primary font-medium">Llegada sin maquillaje:</strong> Por favor asiste con ojos completamente limpios y libres de rímel para asegurar la máxima adherencia.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0 mt-1.5"></span>
+<p><strong class="text-primary font-medium">Tolerancia:</strong> Brindamos 10 minutos de cortesía para respetar la agenda de la siguiente cliente.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Client Testimonial Vignette -->
+<section class="px-margin-mobile mt-2">
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait closeup of a happy smiling woman with beautiful natural eyelash extensions and luminous soft skin, natural warm beige background, editorial luxury lifestyle beauty." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_HHDVo7iWFWtPrVGdNZYMJC9RGMFjp6EkMKPTWxlM94Gk0XU9INQQldy6npRhyUjyjLPxr34rpYO0ykLftl78K4dHWeqLPVYKjFDQKNTtuMgwdfipL-LQ3DpqsU3do2odKpNTWRR5gS8SAXcJpz31D8O54m3eEJSrLNHcvVlDR_-kajyZRVxuRoJSsQLIgGwowkyTZdJhxbxaF0XeaLYbPiVbsdd-5eQh-ceVIw"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex text-secondary mb-0.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-[11px] text-on-surface-variant italic truncate">"Un espacio tan pacífico que me quedé dormida y desperté perfecta."</p>
+<span class="font-label-sm text-[10px] font-semibold text-primary block mt-0.5">Valeria S. — Clienta Frecuente</span>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Service chip selector logic
+  const serviceChips = document.querySelectorAll('.service-chip');
+  const serviceInput = document.getElementById('selected-service-input');
+
+  serviceChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      serviceChips.forEach(c => {
+        c.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'active');
+        c.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+      chip.classList.remove('bg-surface-container-low', 'text-on-surface');
+      chip.classList.add('bg-secondary-container', 'text-on-secondary-container', 'active');
+      serviceInput.value = chip.getAttribute('data-service');
+    });
+  });
+
+  // Date chip selector logic
+  const dateChips = document.querySelectorAll('.date-chip');
+  const dateInput = document.getElementById('selected-date-input');
+
+  dateChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      dateChips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-surface-bright', 'active', 'shadow-sm');
+        c.classList.add('bg-surface-container-low', 'text-on-surface');
+        const dot = c.querySelector('span:last-child');
+        if (dot) {
+          dot.classList.remove('bg-surface-bright');
+          dot.classList.add('bg-secondary');
+        }
+      });
+      chip.classList.remove('bg-surface-container-low', 'text-on-surface');
+      chip.classList.add('bg-primary', 'text-surface-bright', 'active', 'shadow-sm');
+      const dot = chip.querySelector('span:last-child');
+      if (dot) {
+        dot.classList.remove('bg-secondary');
+        dot.classList.add('bg-surface-bright');
+      }
+      dateInput.value = chip.getAttribute('data-date');
+    });
+  });
+
+  // Time chip selector logic
+  const timeChips = document.querySelectorAll('.time-chip');
+  const timeInput = document.getElementById('selected-time-input');
+
+  timeChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      timeChips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-surface-bright', 'font-semibold', 'active');
+        c.classList.add('bg-surface-container-low', 'text-on-surface');
+      });
+      chip.classList.remove('bg-surface-container-low', 'text-on-surface');
+      chip.classList.add('bg-primary', 'text-surface-bright', 'font-semibold', 'active');
+      timeInput.value = chip.getAttribute('data-time');
+    });
+  });
+
+  // Quick tag helper
+  function appendTag(text) {
+    const notesArea = document.getElementById('client-notes');
+    if (notesArea.value.trim() === '') {
+      notesArea.value = text;
+    } else if (!notesArea.value.includes(text)) {
+      notesArea.value += ', ' + text;
+    }
+  }
+
+  // Format and redirect directly to WhatsApp
+  function sendToWhatsApp() {
+    const service = document.getElementById('selected-service-input').value;
+    const date = document.getElementById('selected-date-input').value;
+    const time = document.getElementById('selected-time-input').value;
+    const name = document.getElementById('client-name').value;
+    const phone = document.getElementById('client-phone').value;
+    const notes = document.getElementById('client-notes').value || 'Ninguna especificada';
+
+    const message = `✨ *Solicitud de Cita - Maryeli Lash Studio* ✨%0A%0A` +
+      `👤 *Cliente:* ${encodeURIComponent(name)}%0A` +
+      `📱 *Teléfono:* ${encodeURIComponent(phone)}%0A` +
+      `👁️ *Servicio:* ${encodeURIComponent(service)}%0A` +
+      `📅 *Fecha preferida:* ${encodeURIComponent(date)}%0A` +
+      `⏰ *Horario:* ${encodeURIComponent(time)}%0A` +
+      `📝 *Notas / Detalles:* ${encodeURIComponent(notes)}%0A%0A` +
+      `_Hola Maryeli, quisiera confirmar la disponibilidad y los datos para el anticipo._`;
+
+    window.open(`https://wa.me/50664730344?text=${message}`, '_blank');
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-bright/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(70,54,43,0.06)]" data-active-classes="text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1 after:h-1 after:rounded-full after:bg-secondary"><div class="h-16 px-space-sm flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 text-on-surface-variant hover:text-primary transition-colors" data-path="inicio" href="index.html"><span class="material-symbols-outlined text-[22px]">spa</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Inicio</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 text-on-surface-variant hover:text-primary transition-colors" data-path="catalogo-de-servicios" href="servicios.html"><span class="material-symbols-outlined text-[22px]">visibility</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Servicios</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 text-on-surface-variant hover:text-primary transition-colors" data-path="galeria-de-trabajos" href="galeria.html"><span class="material-symbols-outlined text-[22px]">auto_awesome</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Galería</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-2 py-1 transition-colors text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1 after:h-1 after:rounded-full after:bg-secondary" data-path="contacto-y-citas" href="contacto.html"><span class="material-symbols-outlined text-[22px]">event_available</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5">Contacto</span></a></div></nav></body></html>

@@ -1,0 +1,4 @@
+recursos/
+*.HEIC
+.venv/
+__pycache__/

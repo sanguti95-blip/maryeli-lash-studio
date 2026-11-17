@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#dac2b2", "surface-bright": "#fcf9f4", "surface-container-high": "#ebe8e3", "primary-container": "#46362b", "on-error": "#ffffff", "on-tertiary": "#ffffff", "surface-variant": "#e5e2dd", "tertiary-fixed-dim": "#dec2a0", "on-surface": "#1c1c19", "on-tertiary-fixed-variant": "#574329", "tertiary": "#302109", "on-surface-variant": "#4e453f", "secondary": "#536351", "inverse-on-surface": "#f3f0eb", "on-primary-container": "#b59f90", "surface-tint": "#6d5b4e", "surface-dim": "#dcdad5", "background": "#fcf9f4", "on-error-container": "#93000a", "surface-container-low": "#f6f3ee", "error": "#ba1a1a", "on-secondary-fixed": "#111f11", "on-secondary-container": "#586957", "surface-container-lowest": "#ffffff", "surface-container": "#f0ede9", "surface-container-highest": "#e5e2dd", "tertiary-container": "#48361d", "on-primary-fixed": "#26190f", "on-tertiary-container": "#b89f7e", "on-tertiary-fixed": "#271904", "outline-variant": "#d2c4bc", "surface": "#fcf9f4", "primary-fixed": "#f7dece", "primary": "#2f2117", "secondary-container": "#d6e8d1", "outline": "#80756e", "secondary-fixed-dim": "#bacbb6", "error-container": "#ffdad6", "inverse-primary": "#dac2b2", "on-primary-fixed-variant": "#544338", "on-primary": "#ffffff", "secondary-fixed": "#d6e8d1", "on-background": "#1c1c19", "on-secondary-fixed-variant": "#3b4b3a", "on-secondary": "#ffffff", "tertiary-fixed": "#fbdeba", "inverse-surface": "#31302d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-xs": "0.25rem", "margin-mobile": "1.25rem", "gutter-mobile": "1rem", "margin": "3rem", "space-lg": "1.5rem" }, "fontFamily": { "label-md": ["Montserrat"], "display": ["EB Garamond"], "headline-lg": ["EB Garamond"], "headline-md": ["EB Garamond"], "headline-lg-mobile": ["EB Garamond"], "label-sm": ["Montserrat"], "title-md": ["Montserrat"], "display-mobile": ["EB Garamond"], "body-lg": ["Montserrat"], "headline-sm": ["EB Garamond"], "price-tag": ["Montserrat"], "body-md": ["Montserrat"] }, "fontSize": { "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }], "display": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.04em", "fontWeight": "400" }], "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["1.875rem", { "lineHeight": "2.25rem", "letterSpacing": "0.03em", "fontWeight": "400" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "500" }], "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-mobile": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "body-lg": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0", "fontWeight": "400" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "price-tag": ["1.125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-md": ["0.875rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;min-height:max(884px,100dvh);}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script src="js/config.js"></script><script src="js/admin-auth.js"></script></head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(70,54,43,0.06)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Maryeli Lash Studio Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfDEXtDyo9-SvFRrl1CVdFJDyCuLuQUybZpABB4O9qOQ_sT2MGg7KjeHKN_gMCXRPJsdwVGamwYu2gvG1c34i1IPTUG22UWjtOwhLaHdJNwMt5Frz0lZzUW34wMU7Ijiz1_ifw25priTS9laRqO9P72dTtv8oTApPy5ggLfDEHtdDr9nasxr3_8Sh2dqXnaj83TCLeAN78B3XVd0u8MQ4wtNQcA-_lgkW3oVF7Dw"/><div class="flex flex-col truncate"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Maryeli Lash Studio</span><span class="px-1.5 py-0.5 rounded-full bg-secondary-container text-secondary text-[10px] font-label-sm uppercase tracking-wider font-semibold shrink-0">Admin</span></div><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant truncate">Panel de Administración</span></div></div><div class="flex items-center gap-1 shrink-0"><a aria-label="Volver a vista cliente" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" data-path="cita-reagendada-con-exito-maryeli-lash-studio" href="index.html" title="Vista Cliente"><span class="material-symbols-outlined text-[20px]">storefront</span></a><button aria-label="Notificaciones" class="relative w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[21px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><button aria-label="Perfil Administrador" class="w-10 h-10 flex items-center justify-center shrink-0"><img alt="Admin Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJCbQf2K2NHjDEOVrvj-yrPnh0XOd8Z0ZWHdLJiL8u4YttmSB41dK5soaO6Sl4eLPYcNBgG093B5Xxn2nnSn7YygLf9ZfgBp8xHGzhYvgDqq6QOnV3s3hVS7MSkGvFc2IOE5FLODxjw0_6fhiAD-7c7YKui12FFsX5lmDisZH_nC7w96mDv8B9hCsj_IChkAQ6e96N-tWk_NSh_uBF1I8AikzyWVrLjRROPG8KUg"/></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<!-- Status & Quick Navigation Pills -->
+<div class="px-margin-mobile pt-space-md pb-space-sm flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container/70 text-secondary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider uppercase">Configuración General</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>Sincronizado</span>
+</div>
+</div>
+<!-- Editorial Section Heading -->
+<div class="px-margin-mobile pt-space-xs pb-space-md">
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Identidad &amp; Operación</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-0.5">Perfil &amp; Configuración del Estudio</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+      Personaliza la fotografía de tu especialista, la portada del santuario y las políticas de cita que ven tus clientas.
+    </p>
+</div>
+<form class="flex flex-col gap-space-lg px-margin-mobile pb-space-xl" id="studio-profile-form" onsubmit="event.preventDefault(); handleProfileSave();">
+<!-- SECTION 1: Banner & Official Studio Imagery -->
+<div class="bg-surface-container rounded-xl overflow-hidden shadow-sm">
+<div class="p-space-md pb-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Espacio Físico</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Portada del Estudio</h2>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-[20px]">storefront</span>
+</div>
+</div>
+<!-- Studio Cover Image with Interactive Overlay -->
+<div class="relative w-full h-44 bg-surface-container-high overflow-hidden group">
+<img alt="Portada de la cabina Maryeli Lash Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Interior view of a luxury boutique lash studio cabin in Costa Rica. Soft linen drapes, minimalist warm cream walls, lush eucalyptus potted plants, cozy memory foam lash bed with a warm cashmere throw, natural sunlit aesthetic, editorial architectural photography." id="cover-preview-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGYYguRD-f5Ee6r6gDWbQhF5Nf2FEf-MaO8Rs_TmKvbLfdgzYQk9owprycVr8tLva7NaxBfpW_F8t9WvV0Ob1K5rG8iSDHWtTH_rarpeKF2LVy6-AJKDWge5jyHevtbeb8mDI-4FGoOexGCcuYccUFWW8c-QNAwaVEUMCIXZwZcafbbzhRnbamATO5aj_d5aZFOP8ZgnQceY3H9JgwkoaU-ZaMCjSXa3J1klvXpQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<!-- Quick Cover Upload Button -->
+<label class="absolute bottom-3 right-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-bright/95 text-primary text-label-sm font-label-sm shadow-md cursor-pointer hover:bg-surface transition-all active:scale-95" for="cover-file-input">
+<span class="material-symbols-outlined text-[16px]">add_a_photo</span>
+<span>Reemplazar Portada</span>
+</label>
+<input accept="image/*" class="hidden" id="cover-file-input" onchange="previewCoverImage(event)" type="file"/>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded-md bg-primary-container/80 text-on-primary-container text-[11px] font-label-sm backdrop-blur-sm">Maryeli Lash Studio</span>
+</div>
+</div>
+<div class="p-space-md flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">brand_awareness</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm font-semibold text-primary uppercase">Emblema Tipográfico</p>
+<p class="text-[11px] text-on-surface-variant font-body-md">Logo vectorizado oficial activo</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-secondary font-label-sm text-label-sm font-semibold">Oficial</span>
+</div>
+</div>
+<!-- SECTION 2: Specialist Avatar & Client Preview -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Lash Master</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Avatar de la Especialista</h2>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-[20px]">person_pin</span>
+</div>
+<!-- Avatar with Botanical Gold Halo -->
+<div class="flex flex-col items-center justify-center pt-space-xs pb-space-sm">
+<div class="relative">
+<!-- Ambient decorative halo -->
+<div class="absolute -inset-2.5 rounded-full bg-gradient-to-tr from-tertiary-fixed via-secondary-container to-tertiary-fixed-dim opacity-70 blur-xs"></div>
+<!-- Avatar Frame -->
+<div class="relative w-28 h-28 rounded-full overflow-hidden shadow-md bg-surface-container-highest">
+<img alt="Maryeli R. Lash Master" class="w-full h-full object-cover" data-alt="Editorial beauty portrait of a welcoming Latina lash master specialist in her late 20s. Glowing skin, refined natural makeup, hair in an elegant low bun, wearing a soft sage-green studio linen apron, warm studio lighting with botanical soft shadow background." id="avatar-preview-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr7usGpuYjjiw3-hGYO_rkD-NsiFg6s-wiicwgOPW1YYRVv52ln1xEQ2qbKlb_HmpYyioHoz-JCxgjixxlmi51L7aPzmfvrMaXyMPv91HbrGFwGOcP7_uZ1Kxl4A7EJ3uX9zrQW8-Ybcr4pJZRFd5b5NRvOtTfdCN-x7DukmD3hheHjQqghSsbCiRuhnQpJgeHuZQ50Lpox8UMA7nzeewGcSscSSF63ccRPPVy0w"/>
+</div>
+<!-- Camera Overlay Trigger -->
+<label class="absolute bottom-0 right-0 w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg cursor-pointer hover:bg-primary-container transition-transform active:scale-90" for="avatar-file-input">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</label>
+<input accept="image/*" class="hidden" id="avatar-file-input" onchange="previewAvatarImage(event)" type="file"/>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary mt-3 text-center">Maryeli R.</p>
+<span class="text-[11px] font-label-sm uppercase tracking-widest text-secondary font-medium">Master Lash &amp; Brow Stylist</span>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 mt-4 w-full max-w-xs">
+<label class="flex-1 py-2 px-3 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm text-center cursor-pointer hover:bg-surface-container-high transition-colors" for="avatar-file-input">
+            Subir nueva foto
+          </label>
+<button class="py-2 px-3 rounded-full bg-error-container/60 text-on-error-container font-label-sm text-label-sm hover:bg-error-container transition-colors" onclick="resetAvatar()" type="button">
+            Eliminar
+          </button>
+</div>
+</div>
+<!-- Live Client Perspective Preview Pill -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Vista previa para clientas</span>
+</div>
+<div class="bg-surface-bright rounded-xl p-3 shadow-sm flex items-center gap-3">
+<div class="w-11 h-11 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+<img alt="Mini vista Maryeli" class="w-full h-full object-cover" data-alt="Close up crop of the same smiling professional female lash artist portrait for mobile client preview." id="avatar-mini-preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4qarQXGmNKQrTC2dWtyXiz4k0fFTjui1LQGAQ-2TnqMv-9_zY6q3zU3OvERycOp57TcftgCaRD8KNrhc_9FGy1EHa-NSTWyeWk-VJPOxOWA-CxRNj0WYEqj5TDQfxrddqstSp_rE0NEwKG7VM0kTFikEXoAH8Z87P5p1yrpKxvQ4FwoyqhzSthCecrAnTfLQMZO59qdUoBRGWBwBcw2OfRhH7J630e0wTBs2wWw"/>
+</div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1">
+<p class="font-title-md text-title-md text-primary truncate text-[14px]">Maryeli Lash Studio</p>
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-[12px] text-on-surface-variant font-body-md truncate">Tu cita será atendida personalmente por Maryeli R.</p>
+</div>
+<span class="text-[11px] font-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full shrink-0">En línea</span>
+</div>
+</div>
+</div>
+<!-- SECTION 3: Business Information & Verification -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Contacto &amp; Ubicación</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Datos Comerciales</h2>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-[20px]">badge</span>
+</div>
+<!-- Field: Lash Master Title -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="founder-name">
+          Nombre de la Fundadora / Artista
+        </label>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg bg-surface-bright text-primary font-body-md text-body-md shadow-sm focus:outline-none focus:ring-0 focus:bg-surface-container-lowest transition-all" id="founder-name" type="text" value="Maryeli R. - Lash Master &amp; Fundadora"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-on-surface-variant/50">stars</span>
+</div>
+</div>
+<!-- Field: Brand Commercial Name -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="studio-brand">
+          Nombre Comercial
+        </label>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg bg-surface-bright text-primary font-body-md text-body-md shadow-sm focus:outline-none focus:ring-0 focus:bg-surface-container-lowest transition-all" id="studio-brand" type="text" value="Maryeli Lash Studio"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-on-surface-variant/50">spa</span>
+</div>
+</div>
+<!-- Field: WhatsApp with Verified Badge -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="studio-whatsapp">
+            WhatsApp de Atención
+          </label>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-secondary bg-secondary-container px-2 py-0.5 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Verificado Oficial
+          </span>
+</div>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg bg-surface-bright text-primary font-body-md text-body-md shadow-sm focus:outline-none focus:ring-0 focus:bg-surface-container-lowest transition-all font-mono tracking-tight" id="studio-whatsapp" type="tel" value="+506 6473 0344"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-secondary">chat</span>
+</div>
+<p class="text-[11px] text-on-surface-variant font-body-md">Canal por el cual se emiten recordatorios automáticos.</p>
+</div>
+<!-- Field: Studio Physical Address -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider" for="studio-address">
+          Dirección Física del Estudio
+        </label>
+<div class="relative">
+<textarea class="w-full p-3 rounded-lg bg-surface-bright text-primary font-body-md text-body-md shadow-sm focus:outline-none focus:ring-0 focus:bg-surface-container-lowest transition-all resize-none" id="studio-address" rows="2">Estudio privado • Atención con cita previa</textarea>
+<span class="material-symbols-outlined absolute right-3 top-3 text-[20px] text-on-surface-variant/50">pin_drop</span>
+</div>
+</div>
+<!-- Location Map Snippet -->
+<div class="rounded-xl overflow-hidden shadow-sm relative">
+<div class="w-full h-32 bg-cover bg-center" data-location="Estudio privado • Atención con cita previa" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClBQ9Iw43Ca5Qbq8eu37rGjrSKX_z87Mc6ryMnZVGkG3c_vkZtrGXz06dEVOtwOvDwTEgiR_-qFlwaLtw-w-ROI_FUWazFUy-xZAlHY5pn3TSxcoUD7pVhoMJDT4R5Kfz129lgz6g74_pUQ7HTSx80Jz2dsOT9_rl7V0MVd6Gd-WvYDM8_00C6Iua-VNDwL0AehZlzImtkYH_Hi84iwehcnjRxol2ClAaSlewqjg')"></div>
+<div class="absolute bottom-2 left-2 px-2.5 py-1 rounded bg-surface/90 backdrop-blur-sm text-[11px] font-label-sm text-primary flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[13px] text-secondary">explore</span>
+          Maryeli Lash Studio
+        </div>
+</div>
+<!-- Operating Hours Card -->
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-sm text-label-sm font-semibold uppercase text-primary">Horario de Cabina</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Lunes a Sábado: 09:00 AM – 08:00 PM</p>
+<p class="text-[11px] text-secondary font-label-sm mt-0.5">Domingos cerrado por mantenimiento holístico</p>
+</div>
+</div>
+</div>
+<!-- SECTION 4: Studio Policies & Security Deposit -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Términos &amp; Agenda</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Políticas de Reserva</h2>
+</div>
+<span class="material-symbols-outlined text-primary/40 text-[20px]">policy</span>
+</div>
+<!-- Anticipo Obligatorio -->
+<div class="bg-surface-bright rounded-lg p-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm font-semibold uppercase text-primary truncate">Anticipo Obligatorio</p>
+<p class="text-[11px] text-on-surface-variant font-body-md">Monto previo para asegurar espacio</p>
+</div>
+</div>
+<div class="w-28 shrink-0">
+<div class="relative">
+<input class="w-full h-10 px-2 text-center rounded-lg bg-surface-container-high font-price-tag text-price-tag text-primary focus:outline-none focus:bg-surface-container-lowest transition-all" id="deposit-amount" type="text" value="₡5,000"/>
+</div>
+</div>
+</div>
+<!-- Rescheduling Notice & Grace Period Grid -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Reagendar sin costo -->
+<div class="bg-surface-bright rounded-lg p-3 shadow-sm flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary text-[20px]">update</span>
+<p class="font-label-sm text-label-sm uppercase text-on-surface-variant mt-1">Reagendar gratis</p>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<input class="w-12 h-8 text-center rounded bg-surface-container-high font-headline-sm text-headline-sm text-primary focus:outline-none" id="reschedule-hours" type="number" value="24"/>
+<span class="font-body-md text-body-md text-primary font-medium">horas</span>
+</div>
+<span class="text-[10px] text-on-surface-variant mt-1">Anticipación mínima</span>
+</div>
+<!-- Tolerancia de cita -->
+<div class="bg-surface-bright rounded-lg p-3 shadow-sm flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary text-[20px]">hourglass_empty</span>
+<p class="font-label-sm text-label-sm uppercase text-on-surface-variant mt-1">Tolerancia</p>
+</div>
+<div class="mt-2 flex items-baseline gap-1">
+<input class="w-12 h-8 text-center rounded bg-surface-container-high font-headline-sm text-headline-sm text-primary focus:outline-none" id="tolerance-mins" type="number" value="10"/>
+<span class="font-body-md text-body-md text-primary font-medium">minutos</span>
+</div>
+<span class="text-[10px] text-on-surface-variant mt-1">Máximo de demora</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-container-high text-on-surface-variant text-[12px] font-body-md">
+<span class="material-symbols-outlined text-secondary text-[16px] shrink-0">info</span>
+<span>Las clientas que superen la tolerancia perderán su anticipo sin excepciones.</span>
+</div>
+</div>
+<!-- Toast Notification Banner (Hidden by default, triggered on Save) -->
+<div class="hidden bg-secondary text-on-secondary px-4 py-3 rounded-xl shadow-lg flex items-center justify-between transition-all" id="save-toast">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span class="font-body-md text-body-md font-medium">Cambios de perfil guardados con éxito</span>
+</div>
+<button class="text-on-secondary/80 hover:text-on-secondary" onclick="document.getElementById('save-toast').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- SECTION 5: Primary CTAs and Bottom Utilities -->
+<div class="flex flex-col gap-3 pt-space-xs">
+<button class="w-full h-12 rounded-full bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider shadow-md hover:bg-primary-container transition-all active:scale-[0.99] flex items-center justify-center gap-2" id="save-profile-btn" type="submit">
+<span class="material-symbols-outlined text-[19px]">save</span>
+<span>Guardar Cambios de Perfil</span>
+</button>
+<a class="w-full py-2.5 text-center font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center gap-1.5" href="index.html" onclick="window.lockMaryeliAdmin(); return false;">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+<span>Cerrar Sesión de Administrador / Ir a Vista de Cliente</span>
+</a>
+</div>
+</form>
+</div>
+<script>
+  function previewAvatarImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const avatarImg = document.getElementById('avatar-preview-img');
+        const miniImg = document.getElementById('avatar-mini-preview');
+        if (avatarImg) avatarImg.src = e.target.result;
+        if (miniImg) miniImg.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function previewCoverImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const coverImg = document.getElementById('cover-preview-img');
+        if (coverImg) coverImg.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function resetAvatar() {
+    const avatarImg = document.getElementById('avatar-preview-img');
+    const miniImg = document.getElementById('avatar-mini-preview');
+    if (avatarImg) avatarImg.src = "placeholder";
+    if (miniImg) miniImg.src = "placeholder";
+  }
+
+  async function loadStudioProfile() {
+    const cfg = window.getMaryeliConfig();
+    if (cfg.supabaseUrl && cfg.supabaseKey) {
+      try {
+        const rows = await window.supabaseFetch(cfg, 'studio_config?id=eq.default&select=config');
+        if (Array.isArray(rows) && rows[0] && rows[0].config) {
+          Object.assign(cfg, rows[0].config);
+        }
+      } catch (e) {}
+    }
+    const brand = document.getElementById('studio-brand');
+    const wa = document.getElementById('studio-whatsapp');
+    const dep = document.getElementById('deposit-amount');
+    if (brand && cfg.studioName) brand.value = cfg.studioName;
+    if (wa && cfg.whatsapp) wa.value = '+' + cfg.whatsapp.replace(/^\+/, '');
+    if (dep && cfg.anticipo) dep.value = cfg.anticipo;
+  }
+
+  async function handleProfileSave() {
+    const btn = document.getElementById('save-profile-btn');
+    const toast = document.getElementById('save-toast');
+    const cfg = window.getMaryeliConfig();
+    const pin = window.getAdminPin();
+
+    const brand = document.getElementById('studio-brand');
+    const wa = document.getElementById('studio-whatsapp');
+    const dep = document.getElementById('deposit-amount');
+    if (brand) cfg.studioName = brand.value.trim();
+    if (wa) cfg.whatsapp = wa.value.replace(/[^\d]/g, '') || '50664730344';
+    if (dep) cfg.anticipo = dep.value.trim() || '₡5,000';
+
+    if (btn) {
+      btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Guardando cambios...</span>`;
+      btn.disabled = true;
+    }
+
+    window.saveMaryeliConfigLocal(cfg);
+
+    if (cfg.supabaseUrl && cfg.supabaseKey && pin) {
+      try {
+        const payload = Object.assign({}, cfg);
+        delete payload.supabaseKey;
+        await window.supabaseFetch(cfg, 'rpc/admin_save_config', {
+          method: 'POST',
+          body: JSON.stringify({ p_pin: pin, p_config: payload })
+        });
+      } catch (err) {
+        alert('Error guardando en Supabase: ' + err.message);
+      }
+    }
+
+    if (btn) {
+      btn.innerHTML = `<span class="material-symbols-outlined text-[19px]">check</span><span>Perfil Actualizado</span>`;
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[19px]">save</span><span>Guardar Cambios de Perfil</span>`;
+      }, 2200);
+    }
+    if (toast) {
+      toast.classList.remove('hidden');
+      setTimeout(() => { toast.classList.add('hidden'); }, 4000);
+    }
+  }
+
+  window.addEventListener('maryeli:admin-unlocked', loadStudioProfile);
+  if (window.getAdminPin()) loadStudioProfile();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-bright/95 backdrop-blur-xl shadow-[0_-4px_24px_rgba(70,54,43,0.08)]"><div class="h-16 px-1 flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-agenda.html"><span class="material-symbols-outlined text-[21px]">calendar_today</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Agenda</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-servicios.html"><span class="material-symbols-outlined text-[21px]">inventory_2</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Servicios</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-finanzas.html"><span class="material-symbols-outlined text-[21px]">payments</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Finanzas</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-galeria.html"><span class="material-symbols-outlined text-[21px]">add_photo_alternate</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Galería</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-promociones.html"><span class="material-symbols-outlined text-[21px]">loyalty</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Promos</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:rounded-full after:bg-secondary" href="admin-perfil.html"><span class="material-symbols-outlined text-[21px]">tune</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Estudio</span></a></div></nav></body></html>

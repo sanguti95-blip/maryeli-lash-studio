@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#dac2b2", "surface-bright": "#fcf9f4", "surface-container-high": "#ebe8e3", "primary-container": "#46362b", "on-error": "#ffffff", "on-tertiary": "#ffffff", "surface-variant": "#e5e2dd", "tertiary-fixed-dim": "#dec2a0", "on-surface": "#1c1c19", "on-tertiary-fixed-variant": "#574329", "tertiary": "#302109", "on-surface-variant": "#4e453f", "secondary": "#536351", "inverse-on-surface": "#f3f0eb", "on-primary-container": "#b59f90", "surface-tint": "#6d5b4e", "surface-dim": "#dcdad5", "background": "#fcf9f4", "on-error-container": "#93000a", "surface-container-low": "#f6f3ee", "error": "#ba1a1a", "on-secondary-fixed": "#111f11", "on-secondary-container": "#586957", "surface-container-lowest": "#ffffff", "surface-container": "#f0ede9", "surface-container-highest": "#e5e2dd", "tertiary-container": "#48361d", "on-primary-fixed": "#26190f", "on-tertiary-container": "#b89f7e", "on-tertiary-fixed": "#271904", "outline-variant": "#d2c4bc", "surface": "#fcf9f4", "primary-fixed": "#f7dece", "primary": "#2f2117", "secondary-container": "#d6e8d1", "outline": "#80756e", "secondary-fixed-dim": "#bacbb6", "error-container": "#ffdad6", "inverse-primary": "#dac2b2", "on-primary-fixed-variant": "#544338", "on-primary": "#ffffff", "secondary-fixed": "#d6e8d1", "on-background": "#1c1c19", "on-secondary-fixed-variant": "#3b4b3a", "on-secondary": "#ffffff", "tertiary-fixed": "#fbdeba", "inverse-surface": "#31302d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-xs": "0.25rem", "margin-mobile": "1.25rem", "gutter-mobile": "1rem", "margin": "3rem", "space-lg": "1.5rem" }, "fontFamily": { "label-md": ["Montserrat"], "display": ["EB Garamond"], "headline-lg": ["EB Garamond"], "headline-md": ["EB Garamond"], "headline-lg-mobile": ["EB Garamond"], "label-sm": ["Montserrat"], "title-md": ["Montserrat"], "display-mobile": ["EB Garamond"], "body-lg": ["Montserrat"], "headline-sm": ["EB Garamond"], "price-tag": ["Montserrat"], "body-md": ["Montserrat"] }, "fontSize": { "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }], "display": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.04em", "fontWeight": "400" }], "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["1.875rem", { "lineHeight": "2.25rem", "letterSpacing": "0.03em", "fontWeight": "400" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "500" }], "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-mobile": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "body-lg": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0", "fontWeight": "400" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "price-tag": ["1.125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-md": ["0.875rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;min-height:max(884px,100dvh);}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script src="js/config.js"></script><script src="js/admin-auth.js"></script></head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(70,54,43,0.06)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Maryeli Lash Studio Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfDEXtDyo9-SvFRrl1CVdFJDyCuLuQUybZpABB4O9qOQ_sT2MGg7KjeHKN_gMCXRPJsdwVGamwYu2gvG1c34i1IPTUG22UWjtOwhLaHdJNwMt5Frz0lZzUW34wMU7Ijiz1_ifw25priTS9laRqO9P72dTtv8oTApPy5ggLfDEHtdDr9nasxr3_8Sh2dqXnaj83TCLeAN78B3XVd0u8MQ4wtNQcA-_lgkW3oVF7Dw"/><div class="flex flex-col truncate"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Maryeli Lash Studio</span><span class="px-1.5 py-0.5 rounded-full bg-secondary-container text-secondary text-[10px] font-label-sm uppercase tracking-wider font-semibold shrink-0">Admin</span></div><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant truncate">Panel de Administración</span></div></div><div class="flex items-center gap-1 shrink-0"><a aria-label="Volver a vista cliente" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" data-path="cita-reagendada-con-exito-maryeli-lash-studio" href="index.html" title="Vista Cliente"><span class="material-symbols-outlined text-[20px]">storefront</span></a><button aria-label="Notificaciones" class="relative w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[21px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><button aria-label="Perfil Administrador" class="w-10 h-10 flex items-center justify-center shrink-0"><img alt="Admin Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJCbQf2K2NHjDEOVrvj-yrPnh0XOd8Z0ZWHdLJiL8u4YttmSB41dK5soaO6Sl4eLPYcNBgG093B5Xxn2nnSn7YygLf9ZfgBp8xHGzhYvgDqq6QOnV3s3hVS7MSkGvFc2IOE5FLODxjw0_6fhiAD-7c7YKui12FFsX5lmDisZH_nC7w96mDv8B9hCsj_IChkAQ6e96N-tWk_NSh_uBF1I8AikzyWVrLjRROPG8KUg"/></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full">
+<div class="px-margin-mobile pt-space-md pb-space-lg flex flex-col gap-space-lg">
+<!-- Hero / Title Block -->
+<div class="flex flex-col gap-space-xs">
+<div class="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-secondary-container text-secondary text-label-sm font-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">spa</span>
+<span>Portafolio Visual</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">
+        Gestor de Galería &amp; Portafolio
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Sube tus mejores aplicaciones antes y después para cautivar nuevas clientas con el arte de su mirada.
+      </p>
+</div>
+<!-- Monthly Delight / Inspiration Metric Card -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-high p-space-md shadow-sm">
+<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-secondary-fixed/50 blur-xl pointer-events-none"></div>
+<div class="flex items-center gap-space-md relative z-10">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Impacto del Estudio</span>
+<p class="font-headline-sm text-headline-sm text-primary">
+            Tus fotos han inspirado <span class="text-secondary font-bold">142 citas</span> este mes
+          </p>
+<span class="font-body-md text-[12px] text-on-surface-variant mt-0.5">92% de las clientas revisan la galería antes de agendar</span>
+</div>
+</div>
+</div>
+<!-- Upload Sanctuary Box -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest p-space-md shadow-md">
+<div class="flex flex-col items-center justify-center text-center p-space-md rounded-lg bg-surface-container-low transition-colors duration-200">
+<div class="relative mb-space-sm flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-surface-tint text-[32px]">photo_camera</span>
+</div>
+<span class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[14px]">add</span>
+</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-1">
+          Carga de Nueva Fotografía
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-space-md">
+          Toca aquí para seleccionar fotos desde tu carrete o tomar foto directa de la cabina.
+        </p>
+<!-- Quick Upload Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm w-full">
+<button class="flex items-center justify-center gap-2 py-3 px-space-sm rounded-full bg-surface-container-high text-primary font-label-md text-label-md hover:bg-surface-container-highest transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+<span class="truncate">En Vivo</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-space-sm rounded-full bg-secondary text-on-secondary font-label-md text-label-md shadow-sm hover:opacity-95 transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined text-[18px]">photo_library</span>
+<span class="truncate">De Galería</span>
+</button>
+</div>
+<div class="mt-space-md flex items-center gap-1.5 text-on-surface-variant font-label-sm text-[11px] uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+<span>JPG, PNG, WEBP de alta resolución</span>
+</div>
+</div>
+<!-- Quick Tagging Configuration Form -->
+<form class="flex flex-col gap-space-md mt-space-lg" onsubmit="event.preventDefault();">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_offer</span>
+<span class="font-title-md text-title-md text-primary">Etiquetado del Tratamiento</span>
+</div>
+<!-- Service Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">
+            Servicio Asociado
+          </label>
+<div class="relative">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg bg-surface-container-low text-primary font-body-md text-body-md appearance-none focus:outline-none focus:bg-surface-container-lowest transition-all">
+<option value="volumen-ruso">Volumen Ruso Sofisticado</option>
+<option value="efecto-hibrido">Efecto Híbrido Natural</option>
+<option value="clasicas">Clásicas Pelo a Pelo</option>
+<option value="mega-volumen">Mega Volumen Glam</option>
+<option value="lash-lifting">Lifting &amp; Laminado Orgánico</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3.5 text-on-surface-variant pointer-events-none text-[20px]">
+              expand_more
+            </span>
+</div>
+</div>
+<!-- Photo Type Selector Chips -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface uppercase tracking-wider">
+            Tipo de Enfoque
+          </label>
+<div class="grid grid-cols-2 gap-2" id="photo-type-group">
+<button class="photo-tag-btn active flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm transition-all" onclick="selectTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">compare</span>
+<span class="truncate">Antes y Después</span>
+</button>
+<button class="photo-tag-btn flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm transition-all" onclick="selectTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_back_ios_new</span>
+<span class="truncate">Resultado Final</span>
+</button>
+<button class="photo-tag-btn flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm transition-all" onclick="selectTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="truncate">Detalle Macro</span>
+</button>
+<button class="photo-tag-btn flex items-center justify-center gap-1.5 h-10 px-3 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm transition-all" onclick="selectTag(this)" type="button">
+<span class="material-symbols-outlined text-[16px]">chair</span>
+<span class="truncate">Ambiente Cabina</span>
+</button>
+</div>
+</div>
+<!-- Featured in Carousel Switch -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low mt-1">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]">view_carousel</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-[14px] text-primary">Carrusel Principal</span>
+<span class="font-body-md text-[12px] text-on-surface-variant">Destacar en pantalla de inicio de clientas</span>
+</div>
+</div>
+<button aria-checked="true" class="w-12 h-6 rounded-full bg-secondary relative transition-colors duration-200 focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<span class="absolute right-1 top-1 w-4 h-4 rounded-full bg-surface transition-transform duration-200 shadow-sm"></span>
+</button>
+</div>
+<!-- Primary Upload Button -->
+<button class="w-full h-12 mt-space-xs rounded-full bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-[0.98] transition-all" type="submit">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+<span>Publicar en Galería del Estudio</span>
+</button>
+</form>
+</div>
+<!-- Current Studio Gallery Grid -->
+<div class="flex flex-col gap-space-md mt-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">grid_view</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Fotografías Activas</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-2.5 py-1 rounded-full font-semibold">
+          6 Publicadas
+        </span>
+</div>
+<!-- 2-Column Responsive Card Mosaic -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Photo 1: Volumen Ruso Macro -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up detailed macro shot of flawless Russian volume eyelash extensions on closed eye, soft natural skin texture, clean botanical wellness spa studio ambient lighting, creamy earth tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWo8gRsLeLv8ELdK_qr02mnZxyac22HsG7lum-aoz6hnrGP9dgA0xUo54FnqJclPq6S1FT6MfXfkEbpDkYO5HtF4sbb_3gJXT5fFOKifbg5lnySvTBTzzJGn-XPZYQcWPTyv_cNBoYIc1e7eA5q74HSXbhNmmlWG6YivbcmTtn-Qd3w3ITrhOn_fVgXSYpwGmmdzwk4sxjr71M-82KmYJvKj7w5TgpHgflSzeYzA"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[10px] font-label-sm font-semibold tracking-wide">
+              Vol. Ruso
+            </span>
+<span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm" title="Visible para clientas">
+<span class="material-symbols-outlined text-[13px]">visibility</span>
+</span>
+</div>
+<div class="p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant truncate">Efecto Kim Abanico</span>
+<span class="font-label-sm text-[10px] text-secondary font-semibold">9.4★</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-error hover:bg-error-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo 2: Antes y Después -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Before and after split composition of natural eyelashes and full hybrid lash extensions, soft daylight aesthetic, beauty salon aesthetic with warm linen and cream hues" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASfXlmVzdLiKoOf45jhfD0juCofW_dC0GenqC8w7aYyvk5g2PEoO4hJU-8GMj1DQ7-UXDEQivViz2i3kkAfPkVjkVzW9glQTfrkZroKnB-OxUliSYUzKZvLDKCD3CWen3gQxGGrpO_cZmbZnjsZrCd3wLjWQxYN8VxvId0qoTtWyrzrvpICHsd0sK4xKarTeoQkUfS94wxes-pxEDnGiRMADawWstb7WIrxFPE4Q"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-label-sm font-semibold tracking-wide">
+              Antes / Desp
+            </span>
+<span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[13px]">visibility</span>
+</span>
+</div>
+<div class="p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant truncate">Híbrido Natural</span>
+<span class="font-label-sm text-[10px] text-secondary font-semibold">Portada</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-error hover:bg-error-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo 3: Clásicas Pelo a Pelo -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Editorial close up of serene young woman with eyes closed showing elegant classic single eyelash extensions, organic eucalyptus studio background, warm sand tones and golden hour lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDktuqolDYmVMkOCCfI0bRdDaQtZHZ3xxNcDokeKbT_DdqsSzU9wTnODmfI0wDXtDDQgXely6Ahr3x8U714CMEMdKCbjJ9S2fgT2u9KGyJGpltd10rjFLnb-UizuUShPg3l46qKEL_7YFJbyq7tIgD7yrlaQR9QICEl5lZzgnMc3nfG0DCm4j9cFJSUGuhblTRrTma3_9emPWTqZGbFsX29FhpBmHBKeKhZbehBlA"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[10px] font-label-sm font-semibold tracking-wide">
+              Clásicas
+            </span>
+<span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[13px]">visibility</span>
+</span>
+</div>
+<div class="p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant truncate">Efecto Seda 1:1</span>
+<span class="font-label-sm text-[10px] text-secondary font-semibold">Activa</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-error hover:bg-error-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo 4: Mega Volumen Glam -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Dramatic and dense mega volume eyelash extensions on perfectly shaped almond eyes, warm organic studio backdrop with soft linen drapery and soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAndQkCKJxFNEwMVA9UMfMfJv6KUVpLBFLGGmh0LkYOjN91LxZkaiwObuFOX_x5SPQfcIyKPlneKPVIbk332edlT8qsIf8TrJgpkd6yNgtnJYfPe_818KIBAX-il2vzzzWYIVHfSPbLG8SmPPWZz1cvwnKTRTOwtAhCaw0NvthxV74LoD0Qp__A1D5k-64dRw9q-ZDt5CSE_a48feHVl5UP3bYM9AF5_mOrVoRm1g"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[10px] font-label-sm font-semibold tracking-wide">
+              Mega Vol.
+            </span>
+<span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[13px]">visibility</span>
+</span>
+</div>
+<div class="p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant truncate">Curva D 14mm</span>
+<span class="font-label-sm text-[10px] text-secondary font-semibold">Activa</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-error hover:bg-error-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo 5: Cabina / Relax Experience -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cozy interior of luxury aesthetic lash studio treatment cabin, plush ergonomic treatment bed with warm beige linen, eucalyptus plants in clay pots, minimalist wellness interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxPva9EttfbfpG4V1Eic4MbK8uOyIddkiKnTpOECQx9m0NhJk5qfHIm37dgGWpOnPGw47XnFvedKGHep4pJvQBufNJgkCed2Zow6vlTaw86vhhSorPmWurdLVCIFJweEICGVEzVOYtj62VUTg1as-lsqRz_DA7Q2z6XemA-BphyiOVbi7SNgX1PmZzJmi0cl1RFZZZakpehjCvpmE3hBuh5cC-nxY8GlREX36H_g"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[10px] font-label-sm font-semibold tracking-wide">
+              Cabina
+            </span>
+<span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-[12px]" title="Oculto temporalmente">
+<span class="material-symbols-outlined text-[13px]">visibility_off</span>
+</span>
+</div>
+<div class="p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant truncate">Espacio Suite 01</span>
+<span class="font-label-sm text-[10px] text-on-surface-variant">Pausa</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-error hover:bg-error-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo 6: Lifting de Pestañas -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm">
+<div class="relative w-full h-44 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Detailed macro of naturally curled glossy eyelashes with dark tint, clean wet lash look, serene glowing skin in soft natural lighting, warm aesthetic lash boutique" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx9olag3gP0zzuKrbd4LBTZkBL50csUp1MVZbgrptueJb8q7GeYrMHKjym3Au00pj9KXhi1b5kmWMBSndXETG3sd8uKNTAPfhyfRscK3yqlsBgv6GSyOAb8bv_E-EehXbXHXLqyD4BS3zQAzBwTwZQyOIjxE5flqsyx4nTq_8S47ze1pGswIrPrQI2ceHnGvOw_Rxvc0HjXBxcvSxN7x7UtqdF--HWI57NY6PMHQ"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-primary text-[10px] font-label-sm font-semibold tracking-wide">
+              Lifting
+            </span>
+<span class="absolute top-2 right-2 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] shadow-sm">
+<span class="material-symbols-outlined text-[13px]">visibility</span>
+</span>
+</div>
+<div class="p-space-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant truncate">Lifting + Queratina</span>
+<span class="font-label-sm text-[10px] text-secondary font-semibold">Activa</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container-low text-error hover:bg-error-container flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[15px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Boutique Tip Card -->
+<div class="flex items-start gap-3 p-space-sm rounded-xl bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-secondary text-[22px] shrink-0 mt-0.5">tips_and_updates</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider font-semibold">Consejo Maryeli</span>
+<p class="font-body-md text-[12px] leading-relaxed mt-0.5">
+          Las fotografías con plano cerrado y luz natural cálida de cabina reciben un 40% más de consultas para agendar tratamientos premium.
+        </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectTag(el) {
+    const parent = el.closest('#photo-type-group');
+    if (!parent) return;
+    const buttons = parent.querySelectorAll('.photo-tag-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('bg-secondary', 'text-on-secondary');
+      btn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+    });
+    el.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+    el.classList.add('bg-secondary', 'text-on-secondary');
+  }
+
+  function toggleSwitch(btn) {
+    const isChecked = btn.getAttribute('aria-checked') === 'true';
+    const nextState = !isChecked;
+    btn.setAttribute('aria-checked', nextState.toString());
+    const knob = btn.querySelector('span');
+    if (nextState) {
+      btn.classList.remove('bg-surface-container-highest');
+      btn.classList.add('bg-secondary');
+      knob.classList.remove('left-1');
+      knob.classList.add('right-1');
+    } else {
+      btn.classList.remove('bg-secondary');
+      btn.classList.add('bg-surface-container-highest');
+      knob.classList.remove('right-1');
+      knob.classList.add('left-1');
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-bright/95 backdrop-blur-xl shadow-[0_-4px_24px_rgba(70,54,43,0.08)]"><div class="h-16 px-1 flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-agenda.html"><span class="material-symbols-outlined text-[21px]">calendar_today</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Agenda</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-servicios.html"><span class="material-symbols-outlined text-[21px]">inventory_2</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Servicios</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-finanzas.html"><span class="material-symbols-outlined text-[21px]">payments</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Finanzas</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:rounded-full after:bg-secondary" href="admin-galeria.html"><span class="material-symbols-outlined text-[21px]">add_photo_alternate</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Galería</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-promociones.html"><span class="material-symbols-outlined text-[21px]">loyalty</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Promos</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-perfil.html"><span class="material-symbols-outlined text-[21px]">tune</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Estudio</span></a></div></nav></body></html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed-dim": "#dac2b2", "surface-bright": "#fcf9f4", "surface-container-high": "#ebe8e3", "primary-container": "#46362b", "on-error": "#ffffff", "on-tertiary": "#ffffff", "surface-variant": "#e5e2dd", "tertiary-fixed-dim": "#dec2a0", "on-surface": "#1c1c19", "on-tertiary-fixed-variant": "#574329", "tertiary": "#302109", "on-surface-variant": "#4e453f", "secondary": "#536351", "inverse-on-surface": "#f3f0eb", "on-primary-container": "#b59f90", "surface-tint": "#6d5b4e", "surface-dim": "#dcdad5", "background": "#fcf9f4", "on-error-container": "#93000a", "surface-container-low": "#f6f3ee", "error": "#ba1a1a", "on-secondary-fixed": "#111f11", "on-secondary-container": "#586957", "surface-container-lowest": "#ffffff", "surface-container": "#f0ede9", "surface-container-highest": "#e5e2dd", "tertiary-container": "#48361d", "on-primary-fixed": "#26190f", "on-tertiary-container": "#b89f7e", "on-tertiary-fixed": "#271904", "outline-variant": "#d2c4bc", "surface": "#fcf9f4", "primary-fixed": "#f7dece", "primary": "#2f2117", "secondary-container": "#d6e8d1", "outline": "#80756e", "secondary-fixed-dim": "#bacbb6", "error-container": "#ffdad6", "inverse-primary": "#dac2b2", "on-primary-fixed-variant": "#544338", "on-primary": "#ffffff", "secondary-fixed": "#d6e8d1", "on-background": "#1c1c19", "on-secondary-fixed-variant": "#3b4b3a", "on-secondary": "#ffffff", "tertiary-fixed": "#fbdeba", "inverse-surface": "#31302d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-sm": "0.5rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-xs": "0.25rem", "margin-mobile": "1.25rem", "gutter-mobile": "1rem", "margin": "3rem", "space-lg": "1.5rem" }, "fontFamily": { "label-md": ["Montserrat"], "display": ["EB Garamond"], "headline-lg": ["EB Garamond"], "headline-md": ["EB Garamond"], "headline-lg-mobile": ["EB Garamond"], "label-sm": ["Montserrat"], "title-md": ["Montserrat"], "display-mobile": ["EB Garamond"], "body-lg": ["Montserrat"], "headline-sm": ["EB Garamond"], "price-tag": ["Montserrat"], "body-md": ["Montserrat"] }, "fontSize": { "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "600" }], "display": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "headline-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.04em", "fontWeight": "400" }], "headline-md": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "0.02em", "fontWeight": "500" }], "headline-lg-mobile": ["1.875rem", { "lineHeight": "2.25rem", "letterSpacing": "0.03em", "fontWeight": "400" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "500" }], "title-md": ["1.125rem", { "lineHeight": "1.6rem", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-mobile": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "0.02em", "fontWeight": "400" }], "body-lg": ["1rem", { "lineHeight": "1.65rem", "letterSpacing": "0", "fontWeight": "400" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "price-tag": ["1.125rem", { "lineHeight": "1.25rem", "letterSpacing": "0.02em", "fontWeight": "600" }], "body-md": ["0.875rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;min-height:max(884px,100dvh);}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <script src="js/config.js"></script><script src="js/admin-auth.js"></script></head><body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/90 backdrop-blur-xl shadow-[0_1px_16px_rgba(70,54,43,0.06)]"><div class="h-16 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="Maryeli Lash Studio Logo" class="h-8 w-auto object-contain shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfDEXtDyo9-SvFRrl1CVdFJDyCuLuQUybZpABB4O9qOQ_sT2MGg7KjeHKN_gMCXRPJsdwVGamwYu2gvG1c34i1IPTUG22UWjtOwhLaHdJNwMt5Frz0lZzUW34wMU7Ijiz1_ifw25priTS9laRqO9P72dTtv8oTApPy5ggLfDEHtdDr9nasxr3_8Sh2dqXnaj83TCLeAN78B3XVd0u8MQ4wtNQcA-_lgkW3oVF7Dw"/><div class="flex flex-col truncate"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate">Maryeli Lash Studio</span><span class="px-1.5 py-0.5 rounded-full bg-secondary-container text-secondary text-[10px] font-label-sm uppercase tracking-wider font-semibold shrink-0">Admin</span></div><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant truncate">Panel de Administración</span></div></div><div class="flex items-center gap-1 shrink-0"><a aria-label="Volver a vista cliente" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors" data-path="cita-reagendada-con-exito-maryeli-lash-studio" href="index.html" title="Vista Cliente"><span class="material-symbols-outlined text-[20px]">storefront</span></a><button aria-label="Notificaciones" class="relative w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[21px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><button aria-label="Perfil Administrador" class="w-10 h-10 flex items-center justify-center shrink-0"><img alt="Admin Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-secondary/40 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJCbQf2K2NHjDEOVrvj-yrPnh0XOd8Z0ZWHdLJiL8u4YttmSB41dK5soaO6Sl4eLPYcNBgG093B5Xxn2nnSn7YygLf9ZfgBp8xHGzhYvgDqq6QOnV3s3hVS7MSkGvFc2IOE5FLODxjw0_6fhiAD-7c7YKui12FFsX5lmDisZH_nC7w96mDv8B9hCsj_IChkAQ6e96N-tWk_NSh_uBF1I8AikzyWVrLjRROPG8KUg"/></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface"><div class="flex flex-col w-full pb-10">
+<!-- Saludo y Métricas Diarias -->
+<section class="px-margin-mobile pt-4 pb-2">
+<div class="flex items-baseline justify-between mb-1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">¡Hola, Maryeli! ✨</h1>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/60 px-2 py-0.5 rounded-full font-semibold uppercase tracking-wider">Hoy, 24 Oct</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Administra tus servicios exclusivos, visibilidad y tarifas en tiempo real.</p>
+<!-- Stat Pills Bento -->
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">event_available</span>
+<span class="text-[10px] font-label-sm text-secondary font-bold uppercase tracking-wider">+2 vs ayer</span>
+</div>
+<div>
+<span class="block font-headline-sm text-headline-sm text-primary leading-tight font-semibold">6</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Citas Hoy</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-tertiary mb-1">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span class="text-[10px] font-label-sm text-tertiary font-bold uppercase tracking-wider">Est.</span>
+</div>
+<div>
+<span class="block font-price-tag text-price-tag text-primary leading-tight font-semibold">₡140,000</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Ingreso Proy.</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">spa</span>
+<span class="text-[10px] font-label-sm text-secondary font-bold uppercase tracking-wider">100% OK</span>
+</div>
+<div>
+<span class="block font-headline-sm text-headline-sm text-primary leading-tight font-semibold">8</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Activos</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Barra de Sincronización Automática Global -->
+<div class="px-margin-mobile my-3">
+<div class="bg-secondary-container/40 p-3 rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-label-md text-primary font-semibold truncate">Sincronización en Directo</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Los cambios se reflejan al instante en la app de clientes.</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-wider px-3.5 py-2 rounded-full font-semibold shrink-0 shadow-sm active:scale-95 transition-transform" id="save-all-btn">
+        Guardar
+      </button>
+</div>
+</div>
+<!-- Pestañas Filtros de Categorías -->
+<div class="w-full overflow-x-auto px-margin-mobile py-2 flex items-center gap-2 no-scrollbar">
+<button class="filter-tab active-tab bg-secondary text-on-secondary px-3.5 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider shrink-0 transition-colors shadow-sm">
+      Todas (8)
+    </button>
+<button class="filter-tab bg-surface-container-low text-on-surface-variant hover:text-primary px-3.5 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider shrink-0 transition-colors">
+      Clásicas
+    </button>
+<button class="filter-tab bg-surface-container-low text-on-surface-variant hover:text-primary px-3.5 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider shrink-0 transition-colors">
+      Híbridas
+    </button>
+<button class="filter-tab bg-surface-container-low text-on-surface-variant hover:text-primary px-3.5 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider shrink-0 transition-colors">
+      Volumen Ruso
+    </button>
+<button class="filter-tab bg-surface-container-low text-on-surface-variant hover:text-primary px-3.5 py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider shrink-0 transition-colors">
+      Lifting &amp; Spa
+    </button>
+</div>
+<!-- Listado de Servicios -->
+<section class="px-margin-mobile flex flex-col gap-3 mt-2">
+<!-- Servicio 1: Efecto Híbrido Wispy -->
+<article class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3 transition-all">
+<div class="flex gap-3 items-start">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close up photography of delicate wispy eyelash extensions applied on closed eyes of a woman, warm soft daylight studio background, serene luxurious beauty aesthetic with warm beige tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZaCPcFk-I2BiImojF83fwNuyM5b6qDpPUJadhd7p6VDWlmWbAdzYVevcnQQZZEiZB_3qRk3VekSqL3xAyy1pklcIiTW0zWxGSq7wma40DT6Zglyglb1_ru0gaY5F48eMDrbLMlGgk2uys-koUZtkVIZW_VhHu0v01IB1p5VxHmwcF6P-dJJEgDnua_YCsZ4PNHscbWqt02AzRmPAnscjdGfUdO7bQ_cbsVPNniQ"/>
+<span class="absolute top-1 left-1 bg-surface-bright/90 backdrop-blur-xs text-[9px] font-label-sm text-primary px-1.5 py-0.5 rounded-full font-semibold">110m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full">Más Popular</span>
+<!-- Toggle Visibilidad -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
+</label>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary leading-tight truncate">Efecto Híbrido Wispy</h2>
+<p class="font-body-md text-[12px] text-on-surface-variant line-clamp-1 mt-0.5">Mezcla artesanal de técnica clásica y abanicos 3D para mirada texturizada.</p>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-medium">Tarifa:</span>
+<div class="flex items-center text-primary font-price-tag text-price-tag font-bold">
+<span>₡</span>
+<input class="w-16 bg-transparent text-primary font-price-tag text-price-tag font-bold focus:outline-none focus:bg-surface-container-highest px-1 rounded transition-colors" type="number" value="22000"/>
+<span class="text-[10px] font-label-sm text-on-surface-variant font-normal ml-0.5"> CRC</span>
+</div>
+</div>
+<button class="text-secondary hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+              Opciones
+            </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Servicio 2: Volumen Ruso Glamour -->
+<article class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3 transition-all">
+<div class="flex gap-3 items-start">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Professional aesthetic macro shot of full Russian volume eyelashes with deep black drama, porcelain clean glowing skin, soft neutral linen studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdvR1_0EM2Yo8wD6gbsGnn6JH9RT7Ex9iynfinlU72V8E5p5wJ9UEVLBlIrqfTmoraJPGZ5Wrj_ziFX7wKhu2Bob5exR_-JLgEi4CgdLN3oBzJZvlwazYSH-tSLrpALtCObzHjYsVqMaVYXa9oFml4nwxWP7He2rp3m4jm0rfb0TsnPq8ThAGyfDl6MY1ZWOPM8gE4j8UOoq_RJCY4UPBwb7Aajvx-qKwMSoG_Rg"/>
+<span class="absolute top-1 left-1 bg-surface-bright/90 backdrop-blur-xs text-[9px] font-label-sm text-primary px-1.5 py-0.5 rounded-full font-semibold">130m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="bg-secondary-container text-secondary font-label-sm text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">local_offer</span>
+              Promo Activa
+            </span>
+<!-- Toggle Visibilidad -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
+</label>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary leading-tight truncate">Volumen Ruso Glamour</h2>
+<p class="font-body-md text-[12px] text-on-surface-variant line-clamp-1 mt-0.5">Abanicos ultra ligeros de 4D a 6D para máxima densidad y suavidad aterciopelada.</p>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-medium">Tarifa:</span>
+<div class="flex items-center text-primary font-price-tag text-price-tag font-bold">
+<span class="line-through text-on-surface-variant text-[11px] mr-1">$850</span>
+<span>₡</span>
+<input class="w-16 bg-transparent text-primary font-price-tag text-price-tag font-bold focus:outline-none focus:bg-surface-container-highest px-1 rounded transition-colors" type="number" value="750"/>
+<span class="text-[10px] font-label-sm text-on-surface-variant font-normal ml-0.5"> CRC</span>
+</div>
+</div>
+<button class="text-secondary hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+              Editar
+            </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Servicio 3: Extensiones Clásicas 1x1 Soft -->
+<article class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3 transition-all">
+<div class="flex gap-3 items-start">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Elegant natural individual classic eyelash extensions, close beauty shot of eyelashes curled gracefully, soft warm spa atmosphere, natural tone aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr41xyUYASkaeoPR6Uqe5gBvWdrCvCG7c-wtKdCoTem59ji4WmJ3HqVdVhM7o2v7_39ZG46TffGoQHNllYckgvi3l9oYnnuP5XPP_DpCNZcdaFmRN-y5vYFSYug6JLy-IPxACyyaxv30WjoAyuIKH6afG1g9fcTBVygz0IAXHICidV2Kzv-HUsPbFqXpUjN2R_CU-x83PZT9kPXLcwRHEqV1Ffs2TJhT5qyuyxLg"/>
+<span class="absolute top-1 left-1 bg-surface-bright/90 backdrop-blur-xs text-[9px] font-label-sm text-primary px-1.5 py-0.5 rounded-full font-semibold">90m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="text-[11px] font-label-sm text-on-surface-variant tracking-wider uppercase font-semibold">Técnica Base</span>
+<!-- Toggle Visibilidad -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
+</label>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary leading-tight truncate">Clásicas 1x1 Soft</h2>
+<p class="font-body-md text-[12px] text-on-surface-variant line-clamp-1 mt-0.5">Una extensión de seda ultra fina por cada pestaña natural. Realce orgánico.</p>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-medium">Tarifa:</span>
+<div class="flex items-center text-primary font-price-tag text-price-tag font-bold">
+<span>₡</span>
+<input class="w-16 bg-transparent text-primary font-price-tag text-price-tag font-bold focus:outline-none focus:bg-surface-container-highest px-1 rounded transition-colors" type="number" value="20000"/>
+<span class="text-[10px] font-label-sm text-on-surface-variant font-normal ml-0.5"> CRC</span>
+</div>
+</div>
+<button class="text-secondary hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+              Editar
+            </button>
+</div>
+</div>
+</div>
+</article>
+<!-- Servicio 4: Lash Lifting & Keratina Botox -->
+<article class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3 transition-all">
+<div class="flex gap-3 items-start">
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Lash lifting treatment result with deep conditioning gloss, natural lifted lashes on peaceful closed eyes, warm minimalist botanical spa background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0KDlMB-XGxLWIRN_mTkn6XwJ2eEaSHCYVioMPif1QBhvtnA8X2GbTuTAUpiwQhMt8SdnB_CFsPEL4Em3zyODb53b13vEOQ9aGYBAo91nh0yu-amB09jNfAISdGxtHVSGlXeYN3rq2heOeXFNLET417HtuxFWsP-MUCYwnIk02wsG_aMZ9c1J1YpSJUqI_JhpgYofaf16ne9X7fiW3UyGsJNQ0VfGN7PtMx7n1xg"/>
+<span class="absolute top-1 left-1 bg-surface-bright/90 backdrop-blur-xs text-[9px] font-label-sm text-primary px-1.5 py-0.5 rounded-full font-semibold">60m</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between gap-1 mb-1">
+<span class="text-[11px] font-label-sm text-secondary font-semibold uppercase tracking-wider">Cuidado Natural</span>
+<!-- Toggle Visibilidad -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-status" type="checkbox"/>
+<div class="w-8 h-4 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface after:rounded-full after:h-3 after:w-3 after:transition-all"></div>
+</label>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary leading-tight truncate">Lifting &amp; Keratina Botox</h2>
+<p class="font-body-md text-[12px] text-on-surface-variant line-clamp-1 mt-0.5">Curvatura permanente natural con infusión de vitaminas y laminado botánico.</p>
+<div class="flex items-center justify-between mt-2 pt-2 bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-medium">Tarifa:</span>
+<div class="flex items-center text-primary font-price-tag text-price-tag font-bold">
+<span>₡</span>
+<input class="w-16 bg-transparent text-primary font-price-tag text-price-tag font-bold focus:outline-none focus:bg-surface-container-highest px-1 rounded transition-colors" type="number" value="380"/>
+<span class="text-[10px] font-label-sm text-on-surface-variant font-normal ml-0.5"> CRC</span>
+</div>
+</div>
+<button class="text-secondary hover:text-primary transition-colors flex items-center gap-1 text-[11px] font-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+              Editar
+            </button>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Botón Añadir Nuevo Servicio -->
+<div class="px-margin-mobile mt-4">
+<button class="w-full bg-primary-container text-on-primary-fixed-variant p-4 rounded-xl shadow-sm flex items-center justify-center gap-2 font-label-sm text-label-sm uppercase tracking-wider font-semibold active:scale-[0.99] transition-transform" id="open-new-service-btn">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed">add_circle</span>
+<span class="text-surface-bright font-semibold">Agregar Nuevo Servicio o Técnica</span>
+</button>
+</div>
+<!-- Panel Formulario Expandible Nuevo Servicio (Acordeón o Modal Simulado) -->
+<div class="hidden px-margin-mobile mt-3" id="new-service-panel">
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-md flex flex-col gap-3">
+<div class="flex items-center justify-between pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">auto_fix_high</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Nueva Técnica de Autor</h3>
+</div>
+<button class="text-on-surface-variant hover:text-primary" id="close-new-service-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-2.5">
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Nombre del Servicio</label>
+<input class="w-full h-11 bg-surface-container-low px-3 rounded-lg text-primary font-body-md text-body-md focus:outline-none focus:bg-surface-container-high transition-colors" placeholder="Ej. Mega Volumen Velvet 8D" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Duración (Min)</label>
+<input class="w-full h-11 bg-surface-container-low px-3 rounded-lg text-primary font-body-md text-body-md focus:outline-none focus:bg-surface-container-high" placeholder="120" type="number"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Precio Base ($ CRC)</label>
+<input class="w-full h-11 bg-surface-container-low px-3 rounded-lg text-primary font-body-md text-body-md focus:outline-none focus:bg-surface-container-high" placeholder="600" type="number"/>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Anticipo Requerido para Apartar</label>
+<div class="flex items-center bg-surface-container-low px-3 rounded-lg h-11">
+<span class="text-on-surface-variant font-label-sm mr-1">$</span>
+<input class="w-full bg-transparent text-primary font-body-md text-body-md focus:outline-none" type="number" value="150"/>
+<span class="text-on-surface-variant font-label-sm text-[11px] shrink-0"> CRC fijado</span>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Descripción Breve</label>
+<textarea class="w-full bg-surface-container-low p-2.5 rounded-lg text-primary font-body-md text-body-md focus:outline-none focus:bg-surface-container-high resize-none" placeholder="Detalla los beneficios, grosor de pestañas y tipo de mirada..." rows="2"></textarea>
+</div>
+<button class="mt-1 w-full bg-secondary text-on-secondary h-11 rounded-full font-label-sm text-label-sm uppercase tracking-wider font-semibold shadow-sm active:scale-95 transition-transform flex items-center justify-center gap-1.5" id="confirm-add-service-btn">
+<span class="material-symbols-outlined text-[18px]">check</span>
+          Publicar en Catálogo
+        </button>
+</div>
+</div>
+</div>
+<!-- Resumen de Política de Anticipos e Historial de Cambios -->
+<section class="px-margin-mobile mt-6 mb-2">
+<div class="bg-surface-container p-4 rounded-xl flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-secondary text-[20px]">history_edu</span>
+<h4 class="font-headline-sm text-headline-sm leading-none">Historial y Reglas de Reserva</h4>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant leading-relaxed">
+        Todos los servicios requieren un anticipo mínimo de <strong>₡5,000</strong> transferido para confirmar el horario. Las cancelaciones con menos de 24h retienen el 50% de cortesía.
+      </p>
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex items-center justify-between text-[11px] font-label-sm py-1 bg-surface-container-lowest/70 px-2.5 rounded-md">
+<span class="text-primary truncate">Aumento Vol. Ruso a ₡25,000</span>
+<span class="text-on-surface-variant shrink-0">Hace 3 días</span>
+</div>
+<div class="flex items-center justify-between text-[11px] font-label-sm py-1 bg-surface-container-lowest/70 px-2.5 rounded-md">
+<span class="text-primary truncate">Lash Lifting promo actualizada</span>
+<span class="text-on-surface-variant shrink-0">12 Oct</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Toast Notificación de Éxito Interactivo -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300 z-50" id="toast-success">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-medium text-surface-bright">Tarifas actualizadas con éxito</span>
+</div>
+</div>
+<script>
+  (function() {
+    // Interacción simple de pestañas
+    const tabs = document.querySelectorAll('.filter-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('bg-secondary', 'text-on-secondary', 'shadow-sm');
+          t.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+        });
+        tab.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        tab.classList.add('bg-secondary', 'text-on-secondary', 'shadow-sm');
+      });
+    });
+
+    // Despliegue de modal/tarjeta nuevo servicio
+    const openBtn = document.getElementById('open-new-service-btn');
+    const closeBtn = document.getElementById('close-new-service-btn');
+    const newServicePanel = document.getElementById('new-service-panel');
+    const confirmAddBtn = document.getElementById('confirm-add-service-btn');
+    const saveAllBtn = document.getElementById('save-all-btn');
+    const toast = document.getElementById('toast-success');
+
+    function showToast(msg) {
+      if (msg) toast.querySelector('span:last-child').textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+        toast.classList.remove('opacity-100');
+      }, 2600);
+    }
+
+    if (openBtn && newServicePanel) {
+      openBtn.addEventListener('click', () => {
+        newServicePanel.classList.toggle('hidden');
+        if (!newServicePanel.classList.contains('hidden')) {
+          newServicePanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    }
+
+    if (closeBtn && newServicePanel) {
+      closeBtn.addEventListener('click', () => {
+        newServicePanel.classList.add('hidden');
+      });
+    }
+
+    if (confirmAddBtn && newServicePanel) {
+      confirmAddBtn.addEventListener('click', () => {
+        newServicePanel.classList.add('hidden');
+        showToast('Servicio añadido al catálogo');
+      });
+    }
+
+    if (saveAllBtn) {
+      saveAllBtn.addEventListener('click', async () => {
+        saveAllBtn.classList.add('scale-90');
+        setTimeout(() => saveAllBtn.classList.remove('scale-90'), 150);
+
+        const cfg = window.getMaryeliConfig();
+        const pin = window.getAdminPin();
+        const cards = document.querySelectorAll('section article');
+        const updated = [];
+        cards.forEach((card, i) => {
+          const title = (card.querySelector('h2') && card.querySelector('h2').textContent.trim()) || `Servicio ${i+1}`;
+          const numInput = card.querySelector('input[type="number"]');
+          const num = numInput ? parseInt(numInput.value || '0', 10) : 20000;
+          const priceStr = '₡' + num.toLocaleString('en-US');
+          const dur = (card.querySelector('span.rounded-full') && card.querySelector('span.rounded-full').textContent.trim()) || '90 min';
+          if (i < 4) {
+            updated.push({
+              id: (cfg.services[i] && cfg.services[i].id) || ('srv-' + i),
+              name: title,
+              shortName: title.split(' ').slice(0, 2).join(' '),
+              subtitle: dur,
+              price: priceStr
+            });
+          }
+        });
+        if (updated.length) cfg.services = updated;
+        window.saveMaryeliConfigLocal(cfg);
+
+        if (cfg.supabaseUrl && cfg.supabaseKey && pin) {
+          try {
+            const payload = Object.assign({}, cfg);
+            delete payload.supabaseKey;
+            await window.supabaseFetch(cfg, 'rpc/admin_save_config', {
+              method: 'POST',
+              body: JSON.stringify({ p_pin: pin, p_config: payload })
+            });
+            showToast('¡Tarifas sincronizadas con Supabase!');
+            return;
+          } catch (e) {}
+        }
+        showToast('¡Precios guardados localmente!');
+      });
+    }
+
+    // Microinteracción para switches de visibilidad
+    const toggles = document.querySelectorAll('.toggle-status');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('change', (e) => {
+        const status = e.target.checked ? 'visible' : 'oculto';
+        showToast(`Servicio marcado como ${status}`);
+      });
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-bright/95 backdrop-blur-xl shadow-[0_-4px_24px_rgba(70,54,43,0.08)]"><div class="h-16 px-1 flex items-center justify-around"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-agenda.html"><span class="material-symbols-outlined text-[21px]">calendar_today</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Agenda</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-primary font-semibold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:rounded-full after:bg-secondary" href="admin-servicios.html"><span class="material-symbols-outlined text-[21px]">inventory_2</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Servicios</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-finanzas.html"><span class="material-symbols-outlined text-[21px]">payments</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Finanzas</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-galeria.html"><span class="material-symbols-outlined text-[21px]">add_photo_alternate</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Galería</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-promociones.html"><span class="material-symbols-outlined text-[21px]">loyalty</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Promos</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-1 py-1 text-on-surface-variant hover:text-primary transition-colors" href="admin-perfil.html"><span class="material-symbols-outlined text-[21px]">tune</span><span class="font-label-sm text-label-sm tracking-wider uppercase mt-0.5 text-[9px]">Estudio</span></a></div></nav></body></html>

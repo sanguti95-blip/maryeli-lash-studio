@@ -72,10 +72,13 @@
 </div>
 <!-- Step 2: Date Selector (Interactive Pills) -->
 <div>
-<label class="font-label-md text-label-md uppercase tracking-wider text-primary flex items-center gap-1.5 mb-2.5">
-<span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">2</span>
-          Fecha Preferida
-        </label>
+<div class="flex items-center justify-between mb-2.5">
+  <label class="font-label-md text-label-md uppercase tracking-wider text-primary flex items-center gap-1.5">
+    <span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">2</span>
+    Fecha Preferida
+  </label>
+  <a href="agendar.html" class="text-[11px] font-semibold text-secondary underline underline-offset-2">Calendario completo →</a>
+</div>
 <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1" id="date-scroll">
 <button class="date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all" data-date="Hoy, 24 Oct" type="button">
 <span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Jue</span>
@@ -150,7 +153,7 @@
 <span class="font-label-sm text-[11px] text-on-surface-variant block mb-1">Teléfono Móvil / WhatsApp</span>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-[18px] text-secondary">phone_iphone</span>
-<input class="w-full h-11 pl-10 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none transition-colors" id="client-phone" placeholder="Ej. 55 1234 5678" required="" type="tel"/>
+<input class="w-full h-11 pl-10 pr-3 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md placeholder:text-on-surface-variant/60 focus:bg-surface-container-lowest focus:outline-none transition-colors" id="client-phone" placeholder="Ej. 8888 8888" required="" type="tel"/>
 </div>
 </div>
 <div>
@@ -312,8 +315,12 @@
 <span class="font-label-sm text-[10px] font-semibold text-primary block mt-0.5">Valeria S. — Clienta Frecuente</span>
 </div>
 </div>
-<div class="mt-6 text-center">
-  <a href="admin.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-on-surface-variant/70 hover:text-primary transition-colors">
+<div class="mt-6 text-center flex items-center justify-center gap-4">
+  <a href="reagendar.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined text-[15px]">event_repeat</span>
+    <span>Reagendar Cita</span>
+  </a>
+  <a href="admin-agenda.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] text-on-surface-variant/70 hover:text-primary transition-colors">
     <span class="material-symbols-outlined text-[15px]">settings</span>
     <span>Configuración del Estudio</span>
   </a>
@@ -543,32 +550,19 @@
       localStorage.setItem('maryeli_local_bookings', JSON.stringify(localList));
     }
 
-    document.getElementById('booking-form').classList.add('hidden');
-    document.getElementById('booking-confirmation').classList.remove('hidden');
-    document.getElementById('conf-code').textContent = `Código: ${bookingCode}`;
-    document.getElementById('conf-summary').innerHTML = `
-      <p><strong>Cliente:</strong> ${name}</p>
-      <p><strong>Servicio:</strong> ${service}</p>
-      <p><strong>Fecha:</strong> ${selectedDateLabel} (${date})</p>
-      <p><strong>Hora:</strong> ${time}</p>
-    `;
-    document.getElementById('conf-sinpe-info').textContent =
-      `Envía el anticipo de ${studioCfg.anticipo} por SINPE Móvil al ${studioCfg.sinpe} y compártenos el comprobante por WhatsApp.`;
+    localStorage.setItem('maryeli_last_booking', JSON.stringify({
+      code: bookingCode,
+      date,
+      dateLabel: selectedDateLabel,
+      time,
+      service,
+      name,
+      phone,
+      notes,
+      status: 'Pendiente SINPE'
+    }));
 
-    document.getElementById('conf-wa-btn').onclick = () => {
-      const message = `✨ *Cita Reservada (${bookingCode}) - Maryeli Lash Studio* ✨%0A%0A` +
-        `👤 *Cliente:* ${encodeURIComponent(name)}%0A` +
-        `📱 *Teléfono:* ${encodeURIComponent(phone)}%0A` +
-        `👁️ *Servicio:* ${encodeURIComponent(service)}%0A` +
-        `📅 *Fecha:* ${encodeURIComponent(selectedDateLabel)} (${date})%0A` +
-        `⏰ *Hora:* ${encodeURIComponent(time)}%0A` +
-        `📝 *Notas:* ${encodeURIComponent(notes)}%0A%0A` +
-        `_Adjunto el comprobante del SINPE Móvil por ${encodeURIComponent(studioCfg.anticipo)}._`;
-      window.open(`https://wa.me/${studioCfg.whatsapp}?text=${message}`, '_blank');
-    };
-
-    btn.disabled = false;
-    lbl.textContent = 'Confirmar Reserva';
+    window.location.href = `confirmacion.html?code=${encodeURIComponent(bookingCode)}`;
   }
 
   function resetBookingForm() {

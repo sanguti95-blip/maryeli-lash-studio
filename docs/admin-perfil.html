@@ -280,37 +280,75 @@
 </form>
 </div>
 <script>
-  function previewAvatarImage(event) {
-    const file = event.target.files[0];
-    if (file) {
+  const DEFAULT_AVATAR_SRC = document.getElementById('avatar-preview-img') ? document.getElementById('avatar-preview-img').src : '';
+  let pendingAvatarUrl = null;
+  let pendingCoverUrl = null;
+
+  function compressImageFile(file, maxDim, quality) {
+    return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onload = function(e) {
-        const avatarImg = document.getElementById('avatar-preview-img');
-        const miniImg = document.getElementById('avatar-mini-preview');
-        if (avatarImg) avatarImg.src = e.target.result;
-        if (miniImg) miniImg.src = e.target.result;
+      reader.onerror = reject;
+      reader.onload = function (e) {
+        const img = new Image();
+        img.onerror = reject;
+        img.onload = function () {
+          let w = img.width;
+          let h = img.height;
+          if (w > maxDim || h > maxDim) {
+            if (w >= h) { h = Math.round(h * (maxDim / w)); w = maxDim; }
+            else { w = Math.round(w * (maxDim / h)); h = maxDim; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w;
+          canvas.height = h;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        };
+        img.src = e.target.result;
       };
       reader.readAsDataURL(file);
+    });
+  }
+
+  async function previewAvatarImage(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    try {
+      const dataUrl = await compressImageFile(file, 360, 0.82);
+      pendingAvatarUrl = dataUrl;
+      const avatarImg = document.getElementById('avatar-preview-img');
+      const miniImg = document.getElementById('avatar-mini-preview');
+      const headerImg = document.querySelector('img[alt="Maryeli Perfil"]');
+      if (avatarImg) avatarImg.src = dataUrl;
+      if (miniImg) miniImg.src = dataUrl;
+      if (headerImg) headerImg.src = dataUrl;
+    } catch (err) {
+      alert('No se pudo procesar la foto seleccionada.');
     }
   }
 
-  function previewCoverImage(event) {
+  async function previewCoverImage(event) {
     const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const coverImg = document.getElementById('cover-preview-img');
-        if (coverImg) coverImg.src = e.target.result;
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+    try {
+      const dataUrl = await compressImageFile(file, 900, 0.8);
+      pendingCoverUrl = dataUrl;
+      const coverImg = document.getElementById('cover-preview-img');
+      if (coverImg) coverImg.src = dataUrl;
+    } catch (err) {
+      alert('No se pudo procesar la imagen de portada.');
     }
   }
 
   function resetAvatar() {
+    pendingAvatarUrl = '';
     const avatarImg = document.getElementById('avatar-preview-img');
     const miniImg = document.getElementById('avatar-mini-preview');
-    if (avatarImg) avatarImg.src = "placeholder";
-    if (miniImg) miniImg.src = "placeholder";
+    const headerImg = document.querySelector('img[alt="Maryeli Perfil"]');
+    if (avatarImg && DEFAULT_AVATAR_SRC) avatarImg.src = DEFAULT_AVATAR_SRC;
+    if (miniImg && DEFAULT_AVATAR_SRC) miniImg.src = DEFAULT_AVATAR_SRC;
+    if (headerImg && DEFAULT_AVATAR_SRC) headerImg.src = DEFAULT_AVATAR_SRC;
   }
 
   async function loadStudioProfile() {
@@ -320,15 +358,25 @@
         const rows = await window.supabaseFetch(cfg, 'studio_config?id=eq.default&select=config');
         if (Array.isArray(rows) && rows[0] && rows[0].config) {
           Object.assign(cfg, rows[0].config);
+          window.saveMaryeliConfigLocal(cfg);
         }
       } catch (e) {}
     }
+    const founder = document.getElementById('founder-name');
     const brand = document.getElementById('studio-brand');
     const wa = document.getElementById('studio-whatsapp');
+    const addr = document.getElementById('studio-address');
     const dep = document.getElementById('deposit-amount');
+    const rHours = document.getElementById('reschedule-hours');
+    const tol = document.getElementById('tolerance-mins');
+    if (founder && cfg.founderName) founder.value = cfg.founderName;
     if (brand && cfg.studioName) brand.value = cfg.studioName;
     if (wa && cfg.whatsapp) wa.value = '+' + cfg.whatsapp.replace(/^\+/, '');
+    if (addr && cfg.address) addr.value = cfg.address;
     if (dep && cfg.anticipo) dep.value = cfg.anticipo;
+    if (rHours && cfg.rescheduleHours) rHours.value = cfg.rescheduleHours;
+    if (tol && cfg.toleranceMins) tol.value = cfg.toleranceMins;
+    window.applyMaryeliBrandAssets(cfg);
   }
 
   async function handleProfileSave() {
@@ -337,12 +385,29 @@
     const cfg = window.getMaryeliConfig();
     const pin = window.getAdminPin();
 
+    const founder = document.getElementById('founder-name');
     const brand = document.getElementById('studio-brand');
     const wa = document.getElementById('studio-whatsapp');
+    const addr = document.getElementById('studio-address');
     const dep = document.getElementById('deposit-amount');
+    const rHours = document.getElementById('reschedule-hours');
+    const tol = document.getElementById('tolerance-mins');
+
+    if (founder) cfg.founderName = founder.value.trim();
     if (brand) cfg.studioName = brand.value.trim();
     if (wa) cfg.whatsapp = wa.value.replace(/[^\d]/g, '') || '50664730344';
+    if (addr) cfg.address = addr.value.trim();
     if (dep) cfg.anticipo = dep.value.trim() || '₡5,000';
+    if (rHours) cfg.rescheduleHours = parseInt(rHours.value || '24', 10);
+    if (tol) cfg.toleranceMins = parseInt(tol.value || '10', 10);
+
+    if (pendingAvatarUrl !== null) {
+      if (pendingAvatarUrl === '') delete cfg.avatarUrl;
+      else cfg.avatarUrl = pendingAvatarUrl;
+    }
+    if (pendingCoverUrl !== null) {
+      cfg.coverUrl = pendingCoverUrl;
+    }
 
     if (btn) {
       btn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span><span>Guardando cambios...</span>`;
@@ -350,6 +415,7 @@
     }
 
     window.saveMaryeliConfigLocal(cfg);
+    window.applyMaryeliBrandAssets(cfg);
 
     if (cfg.supabaseUrl && cfg.supabaseKey && pin) {
       try {
@@ -359,6 +425,8 @@
           method: 'POST',
           body: JSON.stringify({ p_pin: pin, p_config: payload })
         });
+        pendingAvatarUrl = null;
+        pendingCoverUrl = null;
       } catch (err) {
         alert('Error guardando en Supabase: ' + err.message);
       }

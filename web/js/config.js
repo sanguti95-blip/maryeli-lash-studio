@@ -54,3 +54,32 @@ window.supabaseFetch = async function (cfg, path, options = {}) {
   }
   return data;
 };
+
+window.applyMaryeliBrandAssets = function (cfg) {
+  if (!cfg) cfg = window.getMaryeliConfig();
+  if (cfg.avatarUrl) {
+    document.querySelectorAll('img[alt="Profile"], img[alt="Maryeli Perfil"], img[alt="Maryeli R. Lash Master"], img[alt="Mini vista Maryeli"], #avatar-preview-img, #avatar-mini-preview').forEach(img => {
+      img.src = cfg.avatarUrl;
+    });
+  }
+  if (cfg.coverUrl) {
+    document.querySelectorAll('#cover-preview-img').forEach(img => {
+      img.src = cfg.coverUrl;
+    });
+  }
+};
+
+document.addEventListener('DOMContentLoaded', async function () {
+  const cfg = window.getMaryeliConfig();
+  window.applyMaryeliBrandAssets(cfg);
+  if (cfg.supabaseUrl && cfg.supabaseKey) {
+    try {
+      const rows = await window.supabaseFetch(cfg, 'studio_config?id=eq.default&select=config');
+      if (Array.isArray(rows) && rows[0] && rows[0].config) {
+        const merged = Object.assign({}, cfg, rows[0].config);
+        window.saveMaryeliConfigLocal(merged);
+        window.applyMaryeliBrandAssets(merged);
+      }
+    } catch (e) {}
+  }
+});

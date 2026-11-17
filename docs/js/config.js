@@ -11,7 +11,7 @@ window.MARYELI_DEFAULT_CONFIG = {
   hoursWeekday: '9:00 AM – 7:00 PM',
   hoursSaturday: '9:00 AM – 4:00 PM',
   supabaseUrl: 'https://uzmzafnjlunrfnptpuzw.supabase.co',
-  supabaseKey: '', // Pega aquí tu Publishable / anon key (o en admin.html > Ajustes)
+  supabaseKey: 'sb_publishable_TfUwvJNIRjPHLq_K6V3CPg_1fjyrhyw',
   services: [
     { id: 'fibras-c', name: 'Fibras Tecnológicas C', shortName: 'Fibras C', subtitle: 'Efecto Natural • 90 min', price: '₡20,000' },
     { id: 'fibras-cc', name: 'Fibras Tecnológicas CC', shortName: 'Fibras CC', subtitle: 'Mirada Abierta • 105 min', price: '₡22,000' },
@@ -36,11 +36,14 @@ window.saveMaryeliConfigLocal = function (cfg) {
 
 window.supabaseFetch = async function (cfg, path, options = {}) {
   const url = `${cfg.supabaseUrl.replace(/\/$/, '')}/rest/v1/${path}`;
-  const headers = Object.assign({
+  const baseHeaders = {
     'apikey': cfg.supabaseKey,
-    'Authorization': `Bearer ${cfg.supabaseKey}`,
     'Content-Type': 'application/json'
-  }, options.headers || {});
+  };
+  if (cfg.supabaseKey && !cfg.supabaseKey.startsWith('sb_')) {
+    baseHeaders['Authorization'] = `Bearer ${cfg.supabaseKey}`;
+  }
+  const headers = Object.assign(baseHeaders, options.headers || {});
   const res = await fetch(url, Object.assign({}, options, { headers }));
   const text = await res.text();
   let data = null;

@@ -274,8 +274,31 @@
       } catch (e) {}
     }
 
-    const services = cfg.services || [];
+    const services = (cfg.services || []).slice();
     let srvIdx = 0;
+    const urlParams = new URLSearchParams(window.location.search);
+    const reqSrv = (urlParams.get('servicio') || '').trim();
+    const reqPrecio = (urlParams.get('precio') || '').trim();
+    if (reqSrv) {
+      const q = reqSrv.toLowerCase();
+      const found = services.findIndex(s =>
+        (s.id && s.id.toLowerCase() === q) ||
+        (s.name && s.name.toLowerCase().includes(q)) ||
+        (s.shortName && s.shortName.toLowerCase() === q)
+      );
+      if (found >= 0) {
+        srvIdx = found;
+      } else {
+        services.unshift({
+          id: reqSrv.toLowerCase().replace(/\s+/g, '-'),
+          name: reqSrv,
+          shortName: reqSrv,
+          subtitle: 'Servicio seleccionado',
+          price: reqPrecio || '₡20,000'
+        });
+        srvIdx = 0;
+      }
+    }
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     let viewYear = today.getFullYear();

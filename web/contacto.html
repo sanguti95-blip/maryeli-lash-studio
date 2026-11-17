@@ -77,7 +77,7 @@
     <span class="w-5 h-5 rounded-full bg-surface-container-high text-primary flex items-center justify-center text-[10px] font-bold">2</span>
     Fecha Preferida
   </label>
-  <a href="agendar.html" class="text-[11px] font-semibold text-secondary underline underline-offset-2">Calendario completo →</a>
+  <a id="full-calendar-link" href="agendar.html" class="text-[11px] font-semibold text-secondary underline underline-offset-2">Calendario completo →</a>
 </div>
 <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1" id="date-scroll">
 <button class="date-chip flex flex-col items-center justify-center min-w-[56px] py-2.5 px-2 rounded-lg bg-surface-container-low text-on-surface transition-all" data-date="Hoy, 24 Oct" type="button">
@@ -332,25 +332,60 @@
   let selectedDateIso = '';
   let selectedDateLabel = '';
 
-  // Render services dynamically from config
+  // Render services dynamically from config & preselect URL ?servicio=
   function initServices() {
     const container = document.getElementById('service-options');
     const serviceInput = document.getElementById('selected-service-input');
-    const list = studioCfg.services || [];
+    const calLink = document.getElementById('full-calendar-link');
+    const params = new URLSearchParams(window.location.search);
+    const reqServicio = (params.get('servicio') || '').trim();
+    const reqPrecio = (params.get('precio') || '').trim();
+
+    let list = (studioCfg.services || []).slice();
     if (!list.length) return;
+
+    let selectedIdx = 0;
+    if (reqServicio) {
+      const q = reqServicio.toLowerCase();
+      const found = list.findIndex(s =>
+        (s.id && s.id.toLowerCase() === q) ||
+        (s.name && s.name.toLowerCase().includes(q)) ||
+        (s.shortName && s.shortName.toLowerCase() === q)
+      );
+      if (found >= 0) {
+        selectedIdx = found;
+      } else {
+        list.unshift({
+          id: reqServicio.toLowerCase().replace(/\s+/g, '-'),
+          name: reqServicio,
+          shortName: reqServicio,
+          subtitle: 'Servicio seleccionado',
+          price: reqPrecio || 'Consultar'
+        });
+        selectedIdx = 0;
+      }
+    }
+
+    function updateCalendarForward(srv) {
+      if (calLink) {
+        calLink.href = `agendar.html?servicio=${encodeURIComponent(srv.id || srv.name)}&precio=${encodeURIComponent(srv.price || '')}`;
+      }
+    }
+
     container.innerHTML = '';
     list.forEach((srv, i) => {
       const label = `${srv.name} (${srv.price})`;
+      const isActive = i === selectedIdx;
       const btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = i === 0
+      btn.className = isActive
         ? 'service-chip active flex flex-col items-start p-3 rounded-lg text-left bg-secondary-container text-on-secondary-container transition-all'
         : 'service-chip flex flex-col items-start p-3 rounded-lg text-left bg-surface-container-low text-on-surface hover:bg-surface-container transition-all';
       btn.setAttribute('data-service', label);
       btn.innerHTML = `
         <span class="font-title-md text-[13px] font-semibold leading-tight">${srv.shortName || srv.name}</span>
         <span class="font-label-sm text-[10px] opacity-80 mt-0.5">${srv.subtitle || ''}</span>
-        <span class="font-price-tag text-label-md ${i === 0 ? 'text-secondary' : 'text-primary'} mt-1.5 font-bold">${srv.price}</span>
+        <span class="font-price-tag text-label-md ${isActive ? 'text-secondary' : 'text-primary'} mt-1.5 font-bold">${srv.price}</span>
       `;
       btn.addEventListener('click', () => {
         document.querySelectorAll('.service-chip').forEach(c => {
@@ -360,10 +395,14 @@
         btn.classList.remove('bg-surface-container-low', 'text-on-surface');
         btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'active');
         serviceInput.value = label;
+        updateCalendarForward(srv);
       });
       container.appendChild(btn);
     });
-    serviceInput.value = `${list[0].name} (${list[0].price})`;
+
+    const chosen = list[selectedIdx];
+    serviceInput.value = `${chosen.name} (${chosen.price})`;
+    updateCalendarForward(chosen);
   }
 
   // Generate next 7 open days (Mon-Sat)
@@ -572,16 +611,17 @@
   }
 
   async function bootStudio() {
+    initServices();
+    initDates();
     if (studioCfg.supabaseUrl && studioCfg.supabaseKey) {
       try {
         const rows = await window.supabaseFetch(studioCfg, 'studio_config?id=eq.default&select=config');
         if (Array.isArray(rows) && rows[0] && rows[0].config) {
           Object.assign(studioCfg, rows[0].config);
+          initServices();
         }
       } catch (e) {}
     }
-    initServices();
-    initDates();
   }
 
   bootStudio();

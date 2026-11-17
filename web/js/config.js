@@ -58,7 +58,7 @@ window.supabaseFetch = async function (cfg, path, options = {}) {
 window.applyMaryeliBrandAssets = function (cfg) {
   if (!cfg) cfg = window.getMaryeliConfig();
   if (cfg.avatarUrl) {
-    document.querySelectorAll('img[alt="Profile"], img[alt="Maryeli Perfil"], img[alt="Maryeli R. Lash Master"], img[alt="Mini vista Maryeli"], #avatar-preview-img, #avatar-mini-preview').forEach(img => {
+    document.querySelectorAll('img[alt="Profile"], img[alt="Admin Profile"], img[alt="Maryeli Perfil"], img[alt="Maryeli R. Lash Master"], img[alt="Mini vista Maryeli"], img[data-alt*="Portrait of Maryeli"], #avatar-preview-img, #avatar-mini-preview').forEach(img => {
       img.src = cfg.avatarUrl;
     });
   }
